@@ -1,12 +1,21 @@
+DROP TABLE sprzedaz;
+DROP TABLE klient;
 DROP TABLE branza;
-CREATE TABLE branza(
+DROP TABLE sprzedaz;
+DROP TABLE data_sprzedazy;
+DROP TABLE rok;
+DROP TABLE miesiac;
+DROP TABLE dzien;
+DROP TABLE sprzedawca;
+DROP TABLE stanowisko; 
+
+CREATE TABLE branza (
    ID INTEGER NOT NULL,
    nazwa VARCHAR2(20) NOT NULL,
    CONSTRAINT branza_pk PRIMARY KEY(ID)
 );
 
-drop TABLE klient
-CREATE TABLE klient(
+CREATE TABLE klient (
   ID INTEGER NOT NULL,
   branza_ID INTEGER,
   nazwa VARCHAR2(20) NOT NULL,
@@ -14,17 +23,13 @@ CREATE TABLE klient(
   CONSTRAINT klient_branza_fk FOREIGN KEY(branza_ID) REFERENCES branza(ID)
 );
 
-
-
-DROP TABLE stanowisko;
-CREATE TABLE stanowisko(
+CREATE TABLE stanowisko (
    ID INTEGER NOT NULL,
    nazwa VARCHAR2(20) NOT NULL,
    CONSTRAINT stanowisko_pk PRIMARY KEY(ID)
 );
 
-DROP TABLE sprzedawca;
-CREATE TABLE sprzedawca(
+CREATE TABLE sprzedawca (
   ID INTEGER NOT NULL,
   stanowisko_ID INTEGER,
   imie VARCHAR2(20) NOT NULL,
@@ -33,15 +38,13 @@ CREATE TABLE sprzedawca(
   CONSTRAINT sprzedawca_stanowisko_fk FOREIGN KEY(stanowisko_ID) REFERENCES stanowisko(ID)
 );
 
-DROP TABLE dzien
-CREATE TABLE dzien(
+CREATE TABLE dzien (
   ID INTEGER NOT NULL,
   dzien INTEGER,
   CONSTRAINT dzien_pk PRIMARY KEY(ID)
 );
 
-DROP TABLE miesiac;
-CREATE TABLE miesiac(
+CREATE TABLE miesiac (
   ID INTEGER NOT NULL,
   dzien_ID INTEGER,
   miesiac INTEGER NOT NULL,
@@ -49,8 +52,7 @@ CREATE TABLE miesiac(
   CONSTRAINT miesiac_dzien_fk FOREIGN KEY(dzien_ID) REFERENCES dzien(ID)
 );
 
-  DROP TABLE rok
-  CREATE TABLE rok(
+CREATE TABLE rok (
   ID INTEGER NOT NULL,
   miesiac_ID INTEGER,
   rok INTEGER,
@@ -58,34 +60,23 @@ CREATE TABLE miesiac(
   CONSTRAINT rok_miesiac_fk FOREIGN KEY(miesiac_ID) REFERENCES miesiac(ID)
 );
 
-  DROP TABLE data_sprzedazy
-  CREATE TABLE data_sprzedazy(
+CREATE TABLE data_sprzedazy (
   ID INTEGER NOT NULL,
   rok_ID INTEGER,
   czy_dzien_wolny INTEGER,
   CONSTRAINT data_sprzedazy_pk PRIMARY KEY(ID),
   CONSTRAINT data_sprzedazy_rok_fk FOREIGN KEY(rok_ID) REFERENCES rok(ID)
-
 );
 
-
-
-DROP TABLE sprzedaz;
-CREATE TABLE sprzedaz(
+CREATE TABLE sprzedaz (
   ID INTEGER NOT NULL,
   klient_ID INTEGER,
   sprzedawca_ID INTEGER,
   data_sprzedazy_ID INTEGER,
-  iloœæ NUMERIC,
-  wartoœæ FLOAT(1),
+  ilosc NUMERIC(10),
+  wartosc FLOAT(12),
   CONSTRAINT sprzedaz_pk PRIMARY KEY(ID),
-  CONSTRAINT sprzedaz_klient_fk FOREIGN KEY(klient_ID) REFERENCES sprzedaz(ID),
-  CONSTRAINT sprzedaz_sprzedawca_fk FOREIGN KEY(sprzedawca_ID) REFERENCES sprzedaz(ID),
-  CONSTRAINT sprzedaz_data_sprzedazy_fk FOREIGN KEY(data_sprzedazy_ID) REFERENCES data_sprzedazy(ID)
-
+  CONSTRAINT sprzedaz_klient_fk FOREIGN KEY (klient_ID) REFERENCES klient (ID),
+  CONSTRAINT sprzedaz_sprzedawca_fk FOREIGN KEY (sprzedawca_ID) REFERENCES sprzedawca (ID),
+  CONSTRAINT sprzedaz_data_sprzedazy_fk FOREIGN KEY (data_sprzedazy_ID) REFERENCES data_sprzedazy (ID)
 );
-
-insert into branza (ID ,nazwa) values (1,'Castorama');
-insert into klient (ID ,nazwa) values (1,'Solowow');
-
-SELECT* FROM klient;
