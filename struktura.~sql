@@ -1,13 +1,18 @@
 DROP TABLE sprzedaz;
 DROP TABLE klient;
 DROP TABLE branza;
-DROP TABLE sprzedaz;
+DROP TABLE produkt;
+DROP TABLE jednostka_miary;
+DROP TABLE lokalizacja;
+DROP TABLE wojewodztwo;
+DROP TABLE miasto;
 DROP TABLE data_sprzedazy;
 DROP TABLE rok;
 DROP TABLE miesiac;
 DROP TABLE dzien;
 DROP TABLE sprzedawca;
-DROP TABLE stanowisko; 
+DROP TABLE stanowisko;
+
 
 CREATE TABLE branza (
    ID INTEGER NOT NULL,
@@ -84,6 +89,28 @@ CREATE TABLE produkt(
   CONSTRAINT produkt_jednostka_miary_fk FOREIGN KEY(jednostka_miary_ID) REFERENCES jednostka_miary(ID)
 );
 
+CREATE TABLE miasto (
+  ID INTEGER NOT NULL,
+  nazwa VARCHAR2(20),
+  CONSTRAINT miasto_pk PRIMARY KEY(ID)
+);
+
+CREATE TABLE wojewodztwo (
+  ID INTEGER NOT NULL,
+  miasto_ID INTEGER,
+  nazwa VARCHAR2(20),
+  CONSTRAINT wojewodztwo_pk PRIMARY KEY(ID),
+  CONSTRAINT wojewodztwo_miasto_fk FOREIGN KEY(miasto_ID) REFERENCES miasto(ID)
+);
+
+CREATE TABLE lokalizacja (
+  ID INTEGER NOT NULL,
+  wojewodztwo_ID INTEGER,
+  nazwa VARCHAR2(20),
+  CONSTRAINT lokalizacja_pk PRIMARY KEY(ID),
+  CONSTRAINT lokalizacja_wojewodztwo_fk FOREIGN KEY(wojewodztwo_ID) REFERENCES wojewodztwo(ID)
+);
+
 
 CREATE TABLE sprzedaz (
   ID INTEGER NOT NULL,
@@ -91,14 +118,15 @@ CREATE TABLE sprzedaz (
   sprzedawca_ID INTEGER,
   data_sprzedazy_ID INTEGER,
   produkt_ID INTEGER,
+  lokalizacja_ID INTEGER,
   ilosc NUMERIC(10),
   wartosc FLOAT(12),
   CONSTRAINT sprzedaz_pk PRIMARY KEY(ID),
   CONSTRAINT sprzedaz_klient_fk FOREIGN KEY (klient_ID) REFERENCES klient (ID),
   CONSTRAINT sprzedaz_sprzedawca_fk FOREIGN KEY (sprzedawca_ID) REFERENCES sprzedawca (ID),
-  CONSTRAINT sprzedaz_data_sprzedazy_fk FOREIGN KEY (data_sprzedazy_ID) REFERENCES data_sprzedazy (ID)  ,
-  CONSTRAINT sprzedaz_produkt_fk FOREIGN KEY(produkt_ID) REFERENCES produkt(ID)
-
+  CONSTRAINT sprzedaz_data_sprzedazy_fk FOREIGN KEY (data_sprzedazy_ID) REFERENCES data_sprzedazy (ID),
+  CONSTRAINT sprzedaz_produkt_fk FOREIGN KEY(produkt_ID) REFERENCES produkt(ID),
+  CONSTRAINT sprzedaz_lokalizacja_fk FOREIGN KEY(lokalizacja_ID) REFERENCES lokalizacja(ID)
 );
 
 
