@@ -1,7 +1,6 @@
 DROP TABLE sprzedaz;
 DROP TABLE klient;
 DROP TABLE branza;
-DROP TABLE sprzedaz;
 DROP TABLE data_sprzedazy;
 DROP TABLE rok;
 DROP TABLE miesiac;
@@ -80,3 +79,4 @@ CREATE TABLE sprzedaz (
   CONSTRAINT sprzedaz_sprzedawca_fk FOREIGN KEY (sprzedawca_ID) REFERENCES sprzedawca (ID),
   CONSTRAINT sprzedaz_data_sprzedazy_fk FOREIGN KEY (data_sprzedazy_ID) REFERENCES data_sprzedazy (ID)
 );
+
