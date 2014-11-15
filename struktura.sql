@@ -50,7 +50,8 @@ CREATE TABLE dzien (
 CREATE TABLE miesiac (
   id INTEGER NOT NULL,
   dzien_id INTEGER,
-  miesiac VARCHAR2(200) NOT NULL,
+  numer INTEGER NOT NULL,
+  nazwa VARCHAR2(50) NOT NULL,
   CONSTRAINT miesiac_pk PRIMARY KEY(id),
   CONSTRAINT miesiac_dzien_fk FOREIGN KEY(dzien_id) REFERENCES dzien(id)
 );
