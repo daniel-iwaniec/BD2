@@ -13,121 +13,115 @@ DROP TABLE dzien;
 DROP TABLE sprzedawca;
 DROP TABLE stanowisko;
 
-
 CREATE TABLE branza (
-   ID INTEGER NOT NULL,
-   nazwa VARCHAR2(20) NOT NULL,
-   CONSTRAINT branza_pk PRIMARY KEY(ID)
+   id INTEGER NOT NULL,
+   nazwa VARCHAR2(200) NOT NULL,
+   CONSTRAINT branza_pk PRIMARY KEY(id)
 );
 
 CREATE TABLE klient (
-  ID INTEGER NOT NULL,
-  branza_ID INTEGER,
-  nazwa VARCHAR2(20) NOT NULL,
-  CONSTRAINT klient_pk PRIMARY KEY(ID),
-  CONSTRAINT klient_branza_fk FOREIGN KEY(branza_ID) REFERENCES branza(ID)
+  id INTEGER NOT NULL,
+  branza_id INTEGER,
+  nazwa VARCHAR2(200) NOT NULL,
+  CONSTRAINT klient_pk PRIMARY KEY(id),
+  CONSTRAINT klient_branza_fk FOREIGN KEY(branza_id) REFERENCES branza(id)
 );
 
 CREATE TABLE stanowisko (
-   ID INTEGER NOT NULL,
-   nazwa VARCHAR2(20) NOT NULL,
-   CONSTRAINT stanowisko_pk PRIMARY KEY(ID)
+   id INTEGER NOT NULL,
+   nazwa VARCHAR2(200) NOT NULL,
+   CONSTRAINT stanowisko_pk PRIMARY KEY(id)
 );
 
 CREATE TABLE sprzedawca (
-  ID INTEGER NOT NULL,
-  stanowisko_ID INTEGER,
-  imie VARCHAR2(20) NOT NULL,
-  nazwisko VARCHAR2(20) NOT NULL,
-  CONSTRAINT sprzedawca_pk PRIMARY KEY(ID),
-  CONSTRAINT sprzedawca_stanowisko_fk FOREIGN KEY(stanowisko_ID) REFERENCES stanowisko(ID)
+  id INTEGER NOT NULL,
+  stanowisko_id INTEGER,
+  imie VARCHAR2(200) NOT NULL,
+  nazwisko VARCHAR2(200) NOT NULL,
+  CONSTRAINT sprzedawca_pk PRIMARY KEY(id),
+  CONSTRAINT sprzedawca_stanowisko_fk FOREIGN KEY(stanowisko_id) REFERENCES stanowisko(id)
 );
 
 CREATE TABLE dzien (
-  ID INTEGER NOT NULL,
-  dzien INTEGER,
-  CONSTRAINT dzien_pk PRIMARY KEY(ID)
+  id INTEGER NOT NULL,
+  dzien VARCHAR2(200),
+  CONSTRAINT dzien_pk PRIMARY KEY(id)
 );
 
 CREATE TABLE miesiac (
-  ID INTEGER NOT NULL,
-  dzien_ID INTEGER,
-  miesiac INTEGER NOT NULL,
-  CONSTRAINT miesiac_pk PRIMARY KEY(ID),
-  CONSTRAINT miesiac_dzien_fk FOREIGN KEY(dzien_ID) REFERENCES dzien(ID)
+  id INTEGER NOT NULL,
+  dzien_id INTEGER,
+  miesiac VARCHAR2(200) NOT NULL,
+  CONSTRAINT miesiac_pk PRIMARY KEY(id),
+  CONSTRAINT miesiac_dzien_fk FOREIGN KEY(dzien_id) REFERENCES dzien(id)
 );
 
 CREATE TABLE rok (
-  ID INTEGER NOT NULL,
-  miesiac_ID INTEGER,
-  rok INTEGER,
-  CONSTRAINT rok_pk PRIMARY KEY(ID),
-  CONSTRAINT rok_miesiac_fk FOREIGN KEY(miesiac_ID) REFERENCES miesiac(ID)
+  id INTEGER NOT NULL,
+  miesiac_id INTEGER,
+  rok VARCHAR2(200),
+  CONSTRAINT rok_pk PRIMARY KEY(id),
+  CONSTRAINT rok_miesiac_fk FOREIGN KEY(miesiac_id) REFERENCES miesiac(id)
 );
 
 CREATE TABLE data_sprzedazy (
-  ID INTEGER NOT NULL,
-  rok_ID INTEGER,
+  id INTEGER NOT NULL,
+  rok_id INTEGER,
   czy_dzien_wolny INTEGER,
-  CONSTRAINT data_sprzedazy_pk PRIMARY KEY(ID),
-  CONSTRAINT data_sprzedazy_rok_fk FOREIGN KEY(rok_ID) REFERENCES rok(ID)
+  CONSTRAINT data_sprzedazy_pk PRIMARY KEY(id),
+  CONSTRAINT data_sprzedazy_rok_fk FOREIGN KEY(rok_id) REFERENCES rok(id)
 );
 
 CREATE TABLE jednostka_miary(
-   ID INTEGER NOT NULL,
-   nazwa VARCHAR2(20) NOT NULL,
-   symbol VARCHAR2(20) NOT NULL,
-   CONSTRAINT jednostka_miary_pk PRIMARY KEY(ID)
+   id INTEGER NOT NULL,
+   nazwa VARCHAR2(200) NOT NULL,
+   symbol VARCHAR2(200) NOT NULL,
+   CONSTRAINT jednostka_miary_pk PRIMARY KEY(id)
 );
 
-
 CREATE TABLE produkt(
-  ID INTEGER NOT NULL,
-  jednostka_miary_ID INTEGER,
-  nazwa VARCHAR2(20) NOT NULL,
-  CONSTRAINT produkt_pk PRIMARY KEY(ID),
-  CONSTRAINT produkt_jednostka_miary_fk FOREIGN KEY(jednostka_miary_ID) REFERENCES jednostka_miary(ID)
+  id INTEGER NOT NULL,
+  jednostka_miary_id INTEGER,
+  nazwa VARCHAR2(200) NOT NULL,
+  CONSTRAINT produkt_pk PRIMARY KEY(id),
+  CONSTRAINT produkt_jednostka_miary_fk FOREIGN KEY(jednostka_miary_id) REFERENCES jednostka_miary(id)
 );
 
 CREATE TABLE miasto (
-  ID INTEGER NOT NULL,
-  nazwa VARCHAR2(20),
-  CONSTRAINT miasto_pk PRIMARY KEY(ID)
+  id INTEGER NOT NULL,
+  nazwa VARCHAR2(200),
+  CONSTRAINT miasto_pk PRIMARY KEY(id)
 );
 
 CREATE TABLE wojewodztwo (
-  ID INTEGER NOT NULL,
-  miasto_ID INTEGER,
-  nazwa VARCHAR2(20),
-  CONSTRAINT wojewodztwo_pk PRIMARY KEY(ID),
-  CONSTRAINT wojewodztwo_miasto_fk FOREIGN KEY(miasto_ID) REFERENCES miasto(ID)
+  id INTEGER NOT NULL,
+  miasto_id INTEGER,
+  nazwa VARCHAR2(200),
+  CONSTRAINT wojewodztwo_pk PRIMARY KEY(id),
+  CONSTRAINT wojewodztwo_miasto_fk FOREIGN KEY(miasto_id) REFERENCES miasto(id)
 );
 
 CREATE TABLE lokalizacja (
-  ID INTEGER NOT NULL,
-  wojewodztwo_ID INTEGER,
-  nazwa VARCHAR2(20),
-  CONSTRAINT lokalizacja_pk PRIMARY KEY(ID),
-  CONSTRAINT lokalizacja_wojewodztwo_fk FOREIGN KEY(wojewodztwo_ID) REFERENCES wojewodztwo(ID)
+  id INTEGER NOT NULL,
+  wojewodztwo_id INTEGER,
+  nazwa VARCHAR2(200),
+  CONSTRAINT lokalizacja_pk PRIMARY KEY(id),
+  CONSTRAINT lokalizacja_wojewodztwo_fk FOREIGN KEY(wojewodztwo_id) REFERENCES wojewodztwo(id)
 );
-
 
 CREATE TABLE sprzedaz (
-  ID INTEGER NOT NULL,
-  klient_ID INTEGER,
-  sprzedawca_ID INTEGER,
-  data_sprzedazy_ID INTEGER,
-  produkt_ID INTEGER,
-  lokalizacja_ID INTEGER,
-  ilosc NUMERIC(10),
-  wartosc FLOAT(12),
-  CONSTRAINT sprzedaz_pk PRIMARY KEY(ID),
-  CONSTRAINT sprzedaz_klient_fk FOREIGN KEY (klient_ID) REFERENCES klient (ID),
-  CONSTRAINT sprzedaz_sprzedawca_fk FOREIGN KEY (sprzedawca_ID) REFERENCES sprzedawca (ID),
-  CONSTRAINT sprzedaz_data_sprzedazy_fk FOREIGN KEY (data_sprzedazy_ID) REFERENCES data_sprzedazy (ID),
-  CONSTRAINT sprzedaz_produkt_fk FOREIGN KEY(produkt_ID) REFERENCES produkt(ID),
-  CONSTRAINT sprzedaz_lokalizacja_fk FOREIGN KEY(lokalizacja_ID) REFERENCES lokalizacja(ID)
+  id INTEGER NOT NULL,
+  klient_id INTEGER,
+  sprzedawca_id INTEGER,
+  data_sprzedazy_id INTEGER,
+  produkt_id INTEGER,
+  lokalizacja_id INTEGER,
+  ilosc INTEGER,
+  wartosc NUMBER(12,2),
+  CONSTRAINT sprzedaz_pk PRIMARY KEY (id),
+  CONSTRAINT sprzedaz_klient_fk FOREIGN KEY (klient_id) REFERENCES klient (id),
+  CONSTRAINT sprzedaz_sprzedawca_fk FOREIGN KEY (sprzedawca_id) REFERENCES sprzedawca (id),
+  CONSTRAINT sprzedaz_data_sprzedazy_fk FOREIGN KEY (data_sprzedazy_id) REFERENCES data_sprzedazy (id),
+  CONSTRAINT sprzedaz_produkt_fk FOREIGN KEY (produkt_id) REFERENCES produkt(id),
+  CONSTRAINT sprzedaz_lokalizacja_fk FOREIGN KEY (lokalizacja_id) REFERENCES lokalizacja(id)
 );
-
-
-
