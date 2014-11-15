@@ -59,6 +59,7 @@ CREATE TABLE miesiac (
 CREATE TABLE rok (
   id INTEGER NOT NULL,
   miesiac_id INTEGER,
+  numer INTEGER,
   CONSTRAINT rok_pk PRIMARY KEY(id),
   CONSTRAINT rok_miesiac_fk FOREIGN KEY(miesiac_id) REFERENCES miesiac(id)
 );
