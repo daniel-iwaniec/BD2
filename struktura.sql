@@ -7,7 +7,6 @@ DROP TABLE lokalizacja;
 DROP TABLE miasto;
 DROP TABLE wojewodztwo;
 DROP TABLE data_sprzedazy;
-DROP TABLE dzien;
 DROP TABLE miesiac;
 DROP TABLE rok;
 DROP TABLE sprzedawca;
@@ -58,21 +57,15 @@ CREATE TABLE miesiac (
   CONSTRAINT miesiac_rok_fk FOREIGN KEY (rok_id) REFERENCES rok (id)
 );
 
-CREATE TABLE dzien (
-  id INTEGER NOT NULL,
-  miesiac_id INTEGER NOT NULL,
-  numer INTEGER NOT NULL,
-  nazwa VARCHAR2(50) NOT NULL,
-  czy_dzien_roboczy NUMBER(1) NOT NULL,
-  CONSTRAINT dzien_pk PRIMARY KEY (id),
-  CONSTRAINT dzien_miesiac_fk FOREIGN KEY (miesiac_id) REFERENCES miesiac (id)
-);
-
 CREATE TABLE data_sprzedazy (
   id INTEGER NOT NULL,
-  dzien_id INTEGER NOT NULL,
+  miesiac_id INTEGER NOT NULL,
+  numer_miesiac INTEGER NOT NULL,
+  numer_tydzien INTEGER NOT NULL,
+  nazwa VARCHAR2(50) NOT NULL,
+  czy_dzien_roboczy NUMBER(1) NOT NULL,
   CONSTRAINT data_sprzedazy_pk PRIMARY KEY (id),
-  CONSTRAINT data_sprzedazy_dzien_fk FOREIGN KEY (dzien_id) REFERENCES dzien (id)
+  CONSTRAINT data_sprzedazy_miesiac_fk FOREIGN KEY (miesiac_id) REFERENCES miesiac (id)
 );
 
 CREATE TABLE jednostka_miary(
