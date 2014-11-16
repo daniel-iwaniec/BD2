@@ -9,6 +9,7 @@ sqlldr userid=%login%/%haslo% control=rok.ctl log=rok.log
 sqlldr userid=%login%/%haslo% control=miesiac.ctl log=miesiac.log
 sqlldr userid=%login%/%haslo% control=data_sprzedazy.ctl log=data_sprzedazy.log
 sqlldr userid=%login%/%haslo% control=branza.ctl log=branza.log
+sqlldr userid=%login%/%haslo% control=klient.ctl log=klient.log
 sqlldr userid=%login%/%haslo% control=wojewodztwo.ctl log=wojewodztwo.log
 
 goto:eof
