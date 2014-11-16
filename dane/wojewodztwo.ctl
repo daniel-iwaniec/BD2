@@ -3,4 +3,4 @@ CHARACTERSET UTF8
 INFILE 'wojewodztwo.csv'
 INSERT INTO TABLE wojewodztwo
 FIELDS TERMINATED BY ","
-(id, nazwa)
+(id,nazwa)

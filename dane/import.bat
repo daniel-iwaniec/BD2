@@ -12,6 +12,8 @@ sqlldr userid=%login%/%haslo% control=branza.ctl log=branza.log
 sqlldr userid=%login%/%haslo% control=klient.ctl log=klient.log
 sqlldr userid=%login%/%haslo% control=wojewodztwo.ctl log=wojewodztwo.log
 sqlldr userid=%login%/%haslo% control=stanowisko.ctl log=stanowisko.log
+sqlldr userid=%login%/%haslo% control=sprzedawca.ctl log=sprzedawca.log
+
 goto:eof
 :error
 echo Musisz podać dane
