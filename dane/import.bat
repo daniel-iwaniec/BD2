@@ -8,6 +8,7 @@ if "%haslo%"=="null" goto :error
 sqlldr userid=%login%/%haslo% control=rok.ctl log=rok.log
 sqlldr userid=%login%/%haslo% control=miesiac.ctl log=miesiac.log
 sqlldr userid=%login%/%haslo% control=data_sprzedazy.ctl log=data_sprzedazy.log
+sqlldr userid=%login%/%haslo% control=branza.ctl log=branza.log
 
 goto:eof
 :error
