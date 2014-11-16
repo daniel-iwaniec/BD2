@@ -1,6 +1,6 @@
 LOAD DATA
 CHARACTERSET UTF8
-INFILE 'wojewodztwa.csv'
-INSERT INTO TABLE wojewodztwa
+INFILE 'wojewodztwo.csv'
+INSERT INTO TABLE wojewodztwo
 FIELDS TERMINATED BY ","
 (id, nazwa)
