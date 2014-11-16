@@ -13,6 +13,7 @@ sqlldr userid=%login%/%haslo% control=klient.ctl log=klient.log
 sqlldr userid=%login%/%haslo% control=wojewodztwo.ctl log=wojewodztwo.log
 sqlldr userid=%login%/%haslo% control=stanowisko.ctl log=stanowisko.log
 sqlldr userid=%login%/%haslo% control=sprzedawca.ctl log=sprzedawca.log
+sqlldr userid=%login%/%haslo% control=jednostka_miary.ctl log=jednostka_miary.log
 
 goto:eof
 :error
