@@ -15,7 +15,9 @@ sqlldr userid=%login%/%haslo% control=miasto.ctl log=miasto.log
 sqlldr userid=%login%/%haslo% control=lokalizacja.ctl log=lokalizacja.log
 sqlldr userid=%login%/%haslo% control=stanowisko.ctl log=stanowisko.log
 sqlldr userid=%login%/%haslo% control=sprzedawca.ctl log=sprzedawca.log
-sqlldr userid=%login%/%haslo% control=jednostka_miary.ctl log=jednostka_miary.log
+sqlldr userid=%login%/%haslo% control=produkt_typ.ctl log=produkt_typ.log
+sqlldr userid=%login%/%haslo% control=produkt.ctl log=produkt.log
+rem tabela faktów tutaj jeszcze
 
 goto:eof
 :error
