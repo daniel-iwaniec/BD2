@@ -1,4 +1,16 @@
-
+DROP TABLE sprzedaz;
+DROP TABLE klient;
+DROP TABLE branza;
+DROP TABLE produkt;
+DROP TABLE jednostka_miary;
+DROP TABLE lokalizacja;
+DROP TABLE miasto;
+DROP TABLE wojewodztwo;
+DROP TABLE data_sprzedazy;
+DROP TABLE miesiac;
+DROP TABLE rok;
+DROP TABLE sprzedawca;
+DROP TABLE stanowisko;
 
 CREATE TABLE branza (
    id INTEGER NOT NULL,
