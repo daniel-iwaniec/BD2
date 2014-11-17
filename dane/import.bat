@@ -12,7 +12,7 @@ sqlldr userid=%login%/%haslo% control=branza.ctl log=branza.log
 sqlldr userid=%login%/%haslo% control=klient.ctl log=klient.log
 sqlldr userid=%login%/%haslo% control=wojewodztwo.ctl log=wojewodztwo.log
 sqlldr userid=%login%/%haslo% control=miasto.ctl log=miasto.log
-sqlldr userid=%login%/%haslo% control=lokalizacja.ctl log=lokalizacja.log
+rem sqlldr userid=%login%/%haslo% control=lokalizacja.ctl log=lokalizacja.log
 sqlldr userid=%login%/%haslo% control=stanowisko.ctl log=stanowisko.log
 sqlldr userid=%login%/%haslo% control=sprzedawca.ctl log=sprzedawca.log
 sqlldr userid=%login%/%haslo% control=produkt_typ.ctl log=produkt_typ.log
