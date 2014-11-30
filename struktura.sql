@@ -114,6 +114,7 @@ CREATE TABLE sprzedaz (
   lokalizacja_id INTEGER NOT NULL,
   ilosc INTEGER NOT NULL,
   wartosc INTEGER NOT NULL,
+  rabat INTEGER DEFAULT 0 NOT NULL,
   CONSTRAINT sprzedaz_pk PRIMARY KEY (id),
   CONSTRAINT sprzedaz_klient_fk FOREIGN KEY (klient_id) REFERENCES klient (id),
   CONSTRAINT sprzedaz_sprzedawca_fk FOREIGN KEY (sprzedawca_id) REFERENCES sprzedawca (id),
