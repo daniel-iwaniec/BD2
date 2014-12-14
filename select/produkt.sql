@@ -1,0 +1,1 @@
+SELECT * FROM produkt ORDER BY id;

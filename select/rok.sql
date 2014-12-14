@@ -1,0 +1,1 @@
+SELECT * FROM rok ORDER BY id;

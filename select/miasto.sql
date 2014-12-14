@@ -1,0 +1,1 @@
+SELECT * FROM miasto ORDER BY id;

@@ -1,0 +1,1 @@
+SELECT * FROM klient ORDER BY id;

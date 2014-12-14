@@ -1,0 +1,1 @@
+SELECT * FROM sprzedawca ORDER BY id;

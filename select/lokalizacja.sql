@@ -1,0 +1,1 @@
+SELECT * FROM lokalizacja ORDER BY id;

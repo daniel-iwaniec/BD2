@@ -1,0 +1,1 @@
+SELECT * FROM stanowisko ORDER BY id;

@@ -1,0 +1,6 @@
+LOAD DATA
+CHARACTERSET UTF8
+INFILE 'produkt_typ.csv'
+INSERT INTO TABLE produkt_typ
+FIELDS TERMINATED BY ","
+(id,nazwa)
