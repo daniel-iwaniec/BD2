@@ -1,16 +1,18 @@
-DROP TABLE sprzedaz;
-DROP TABLE klient;
-DROP TABLE branza;
-DROP TABLE produkt;
-DROP TABLE produkt_typ;
-DROP TABLE lokalizacja;
-DROP TABLE miasto;
-DROP TABLE wojewodztwo;
-DROP TABLE data_sprzedazy;
-DROP TABLE miesiac;
-DROP TABLE rok;
-DROP TABLE sprzedawca;
-DROP TABLE stanowisko;
+CREATE OR REPLACE PROCEDURE DROP_ALL
+  IS
+    CURSOR table_cursor IS
+    SELECT object_name FROM user_objects WHERE object_type = 'TABLE';
+    
+  BEGIN
+    FOR table_item IN table_cursor LOOP
+      EXECUTE IMMEDIATE ('DROP TABLE ' || table_item.object_name || ' CASCADE CONSTRAINTS');
+    END LOOP;
+    
+    EXCEPTION WHEN OTHERS THEN ROLLBACK;
+  END;
+/
+EXECUTE DROP_ALL;
+DROP PROCEDURE DROP_ALL;
 
 CREATE TABLE branza (
    id INTEGER NOT NULL,
@@ -23,7 +25,7 @@ CREATE TABLE klient (
   branza_id INTEGER,
   nazwa VARCHAR2(200) NOT NULL,
   CONSTRAINT klient_pk PRIMARY KEY(id),
-  CONSTRAINT klient_branza_fk FOREIGN KEY(branza_id) REFERENCES branza(id)
+  CONSTRAINT klient_branza_fk FOREIGN KEY (branza_id) REFERENCES branza(id)
 );
 
 CREATE TABLE stanowisko (
@@ -38,7 +40,7 @@ CREATE TABLE sprzedawca (
   imie VARCHAR2(200) NOT NULL,
   nazwisko VARCHAR2(200) NOT NULL,
   CONSTRAINT sprzedawca_pk PRIMARY KEY(id),
-  CONSTRAINT sprzedawca_stanowisko_fk FOREIGN KEY(stanowisko_id) REFERENCES stanowisko(id)
+  CONSTRAINT sprzedawca_stanowisko_fk FOREIGN KEY (stanowisko_id) REFERENCES stanowisko(id)
 );
 
 CREATE TABLE rok (
@@ -102,7 +104,7 @@ CREATE TABLE lokalizacja (
   ulica VARCHAR2(200) NOT NULL,
   kod_pocztowy VARCHAR2(200) NOT NULL,
   CONSTRAINT lokalizacja_pk PRIMARY KEY (id),
-  CONSTRAINT lokalizacja_miasto_fk FOREIGN KEY(miasto_id) REFERENCES miasto (id)
+  CONSTRAINT lokalizacja_miasto_fk FOREIGN KEY (miasto_id) REFERENCES miasto (id)
 );
 
 CREATE TABLE sprzedaz (
