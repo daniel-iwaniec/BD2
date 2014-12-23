@@ -20,8 +20,8 @@ Opis tego co jest zawarte w projekcie.
 
 ## Autorzy
 
-- [:Daniel Iwaniec](https://github.com/ghutix)
-- [:Artur Kałuża](https://github.com/arturro2828)
+- [Daniel Iwaniec](https://github.com/ghutix)
+- [Artur Kałuża](https://github.com/arturro2828)
 
 ## License
 
