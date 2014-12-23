@@ -1,0 +1,19 @@
+routes:
+    introduction:
+        match: ''
+        action: 'bd2.controller.page:introductionAction'
+    structure:
+        match: '/struktura'
+        action: 'bd2.controller.page:structureAction'
+    data:
+        match: '/dane'
+        action: 'bd2.controller.page:dataAction'
+    import:
+        match: '/import'
+        action: 'bd2.controller.page:importAction'
+    analysis:
+        match: '/analiza'
+        action: 'bd2.controller.page:analysisAction'
+    authors:
+        match: '/autorzy'
+        action: 'bd2.controller.page:authorsAction'

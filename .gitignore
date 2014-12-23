@@ -1,3 +1,9 @@
 dane/import.cmd
 dane/*.log
 dane/*.bad
+php/node_modules/
+php/web/assets/bootstrap/
+php/vendor/
+php/web/assets/jquery/
+php/app/config/parameters.yml.dist
+php/.idea/

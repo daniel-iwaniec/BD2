@@ -1,0 +1,6 @@
+parameters:
+    database_host: 127.0.0.1
+    database_port: 10
+    database_name: dbname
+    database_user: dbuser
+    database_password: dbpass

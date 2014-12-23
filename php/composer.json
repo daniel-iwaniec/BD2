@@ -1,0 +1,16 @@
+{
+    "require": {
+        "silex/silex": "~1.2",
+        "twig/twig": ">=1.8,<2.0-dev",
+        "symfony/twig-bridge": "~2.3",
+        "deralex/yaml-config-service-provider": "1.0.x-dev",
+        "doctrine/dbal": "2.2.*",
+        "qckanemoto/pagination-service-provider": "1.0.*@dev"
+    },
+
+    "minimum-stability": "dev",
+
+    "autoload": {
+        "psr-4": {"BD2\\": "src/BD2/"}
+    }
+}

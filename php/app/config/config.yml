@@ -1,0 +1,14 @@
+twig:
+    paths:
+        - '../src/BD2/Resources/view'
+        - '../app/Resources/view'
+    assets:
+        bd2: 'assets/bd2'
+        bootstrap: 'assets/bootstrap/dist'
+
+services:
+    bd2.controller.page: '\BD2\Controller\PageController'
+    bd2.controller.error: '\BD2\Controller\ErrorController'
+
+error:
+    service: 'bd2.controller.error'

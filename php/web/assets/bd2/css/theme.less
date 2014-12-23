@@ -1,0 +1,32 @@
+@top-menu-offset: 70;
+@body-bottom-offset: 30;
+
+body {
+  padding-top: unit(@top-menu-offset, px);
+  padding-bottom: unit(@body-bottom-offset, px);
+}
+
+.theme-showcase {
+  .navbar .container {
+    width: auto;
+  }
+
+  & > p > .btn {
+    margin: 5px 0;
+  }
+}
+
+.header-badge-template() {
+  .badge {
+    vertical-align: middle;
+  }
+}
+
+.generate-header-badge(@n, @i: 1) when (@i =< @n) {
+  h@{i} {
+    .header-badge-template();
+  }
+  .generate-header-badge(@n, (@i + 1));
+}
+
+.generate-header-badge(6);
