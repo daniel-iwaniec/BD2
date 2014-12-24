@@ -7,3 +7,6 @@ php/vendor/
 php/web/assets/jquery/
 php/app/config/parameters.yml.dist
 php/.idea/
+php/web/assets/bd2/css/theme.css
+php/web/assets/bd2/css/bd2.js
+php/web/assets/bd2/css/bd2.min.js

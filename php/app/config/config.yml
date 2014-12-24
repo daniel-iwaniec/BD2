@@ -5,6 +5,7 @@ twig:
     assets:
         bd2: 'assets/bd2'
         bootstrap: 'assets/bootstrap/dist'
+        prism: 'assets/prism'
 
 services:
     bd2.controller.page: '\BD2\Controller\PageController'

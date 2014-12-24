@@ -22,8 +22,9 @@ class PageController
     public function introductionAction(BD2Application $app, Request $request)
     {
         /** @var \Doctrine\DBAL\Connection $connection */
-        /** @var \Knp\Component\Pager\Paginator $paginator */
         /** @var \Doctrine\DBAL\Driver\Statement $statement */
+        /** @var \Knp\Component\Pager\Paginator $paginator */
+        /** @var \Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination $pagination */
 
         $page = $request->get('page', 1);
         $resultsPerPage = $app['config']['pagination']['results_per_page'];
@@ -36,6 +37,7 @@ class PageController
         $query->orderBy('id', 'asc');
 
         $pagination = $paginator->paginate($query, $page, $resultsPerPage);
+        //$pagination->setUsedRoute('');
 
         $query->setFirstResult($resultsPerPage * ($page - 1));
         $query->setMaxResults($resultsPerPage);

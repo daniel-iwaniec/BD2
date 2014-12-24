@@ -15,9 +15,7 @@
 
     <div class="page-header"><h1>Struktura</h1></div>
     <div class="well">
-        Struktura
-        <pre>
-CREATE OR REPLACE PROCEDURE DROP_ALL
+        <pre class="line-numbers"><code class="language-sql">CREATE OR REPLACE PROCEDURE DROP_ALL
   IS
     CURSOR table_cursor IS
     SELECT object_name FROM user_objects WHERE object_type = 'TABLE';
@@ -142,7 +140,6 @@ CREATE TABLE sprzedaz (
   CONSTRAINT sprzedaz_data_sprzedazy_fk FOREIGN KEY (data_sprzedazy_id) REFERENCES data_sprzedazy (id),
   CONSTRAINT sprzedaz_produkt_fk FOREIGN KEY (produkt_id) REFERENCES produkt (id),
   CONSTRAINT sprzedaz_lokalizacja_fk FOREIGN KEY (lokalizacja_id) REFERENCES lokalizacja (id)
-);
-        </pre>
+);</code></pre>
     </div>
 {% endblock %}
