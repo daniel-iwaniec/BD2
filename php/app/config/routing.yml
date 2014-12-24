@@ -1,11 +1,20 @@
 routes:
+    table:
+        type: 'get'
+        route: '/table/{table}/{page}'
+        action: 'bd2.controller.table:readAction'
+        parameters:
+            default:
+                - {page: 1}
+            assert:
+                - {page: '\d+'}
     introduction:
         type: 'match'
         route: '/'
         action: 'bd2.controller.page:introductionAction'
     introduction_paginated:
             type: 'get'
-            route: '/page/{page}'
+            route: '/strona/{page}'
             action: 'bd2.controller.page:introductionAction'
             parameters:
                 default:

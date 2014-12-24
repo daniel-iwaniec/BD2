@@ -16,8 +16,30 @@ $('.disposable-alert').each(function () {
     }
 });
 
-$('.disposable-alert .close').click(function (event) {
+$('.disposable-alert .close').on('click', function (event) {
     event.preventDefault();
     var alertId = $(this).parent().data('disposable-alert-id');
     $.cookie('disposableAlert' + alertId, 'closed', {path: '/'});
 });
+
+function ajaxContent(event) {
+    event.preventDefault();
+    var contentElement = $(this).parents('.ajax-content');
+
+    contentElement.block();
+
+    $.ajax({
+        url: $(this).attr('href')
+    }).done(function (html) {
+
+        contentElement.replaceWith(html);
+
+        var ajaxLinks = $('.ajax-content a');
+        ajaxLinks.off('click', ajaxContent);
+        ajaxLinks.on('click', ajaxContent);
+    });
+
+    contentElement.unblock();
+}
+
+$('.ajax-content a').on('click', ajaxContent);

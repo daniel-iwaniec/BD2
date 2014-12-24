@@ -21,40 +21,5 @@
         <strong>Czytelność danych</strong> - aby lepiej zrozumieć przedstawione dane <em><a href="{{ url('structure') }}">zobacz strukturę hurtowni</a></em>.
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th><abbr title="Identyfikator wiersza">id</abbr></th>
-                        <th><abbr title="Wymiar - klient">klient_id</abbr></th>
-                        <th><abbr title="Wymiar - sprzedawca">sprzedawca_id</abbr></th>
-                        <th><abbr title="Wymiar - data sprzedaży">data_sprzedazy_id</abbr></th>
-                        <th><abbr title="Wymiar - produkt">produkt_id</abbr></th>
-                        <th><abbr title="Wymiar - lokalizacja">lokalizacja_id</abbr></th>
-                        <th><abbr title="Miara - ilość">ilosc</abbr></th>
-                        <th><abbr title="Miara - wartość">wartosc</abbr></th>
-                        <th><abbr title="Miara - rabat">rabat</abbr></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for sprzedaz in data %}
-                        <tr>
-                            <td><b>{{ sprzedaz.ID }}</b></td>
-                            <td>{{ sprzedaz.KLIENT_ID }}</td>
-                            <td>{{ sprzedaz.SPRZEDAWCA_ID }}</td>
-                            <td>{{ sprzedaz.DATA_SPRZEDAZY_ID }}</td>
-                            <td>{{ sprzedaz.PRODUKT_ID }}</td>
-                            <td>{{ sprzedaz.LOKALIZACJA_ID }}</td>
-                            <td>{{ sprzedaz.ILOSC }}</td>
-                            <td>{{ sprzedaz.WARTOSC }}</td>
-                            <td>{{ sprzedaz.RABAT }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-
-            {{ knp_pagination_render(pagination) }}
-        </div>
-    </div>
+    {{ render(url('table', {'table': 'sprzedaz', 'page': 1})) }}
 {% endblock %}

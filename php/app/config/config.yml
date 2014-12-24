@@ -1,3 +1,17 @@
+services:
+    bd2.controller.page:
+        class: '\BD2\Controller\PageController'
+        tags:
+            - 'bd2.controller'
+    bd2.controller.table:
+            class: '\BD2\Controller\TableController'
+            tags:
+                - 'bd2.controller'
+    bd2.controller.error:
+        class: '\BD2\Controller\ErrorController'
+        tags:
+            - 'bd2.controller'
+
 twig:
     paths:
         - 'src/BD2/Resources/views'
@@ -7,19 +21,7 @@ twig:
         bootstrap: 'assets/bootstrap/dist'
         prism: 'assets/prism'
         jquery.cookie: 'assets/jquery.cookie'
-
-services:
-    bd2.controller.page:
-        class: '\BD2\Controller\PageController'
-        tags:
-            - 'bd2.controller'
-    bd2.controller.error:
-        class: '\BD2\Controller\ErrorController'
-        tags:
-            - 'bd2.controller'
-
-error:
-    service: 'bd2.controller.error'
+        blockUI: 'assets/blockui'
 
 pagination:
     results_per_page: 20
@@ -29,3 +31,22 @@ pagination:
 resources:
     root: 'src/BD2/Resources'
     files: 'files'
+
+tables:
+    - 'branza'
+    - 'klient'
+    - 'stanowisko'
+    - 'sprzedawca'
+    - 'rok'
+    - 'miesiac'
+    - 'data_sprzedazy'
+    - 'produkt_typ'
+    - 'produkt'
+    - 'wojewodztwo'
+    - 'miasto'
+    - 'lokalizacja'
+    - 'sprzedaz'
+
+error:
+    service: 'bd2.controller.error'
+

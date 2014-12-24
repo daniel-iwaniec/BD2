@@ -11,3 +11,5 @@ php/web/assets/bd2/css/theme.css
 php/web/assets/bd2/js/bd2.js
 php/web/assets/bd2/js/bd2.min.js
 php/web/assets/jquery.cookie/
+php/web/assets/prismjs/
+php/web/assets/blockui/
