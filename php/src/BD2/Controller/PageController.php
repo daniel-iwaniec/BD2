@@ -2,24 +2,21 @@
 
 namespace BD2\Controller;
 
-use Silex\Application;
-use BD2\BD2Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Serves general pages listed in top menu.
  */
-class PageController
+class PageController extends AbstractController
 {
     /**
      * Renders introduction page.
      *
-     * @param BD2Application $app
      * @param Request $request
      * @return Response
      */
-    public function introductionAction(BD2Application $app, Request $request)
+    public function introductionAction(Request $request)
     {
         /** @var \Doctrine\DBAL\Connection $connection */
         /** @var \Doctrine\DBAL\Driver\Statement $statement */
@@ -27,10 +24,10 @@ class PageController
         /** @var \Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination $pagination */
 
         $page = $request->get('page', 1);
-        $resultsPerPage = $app['config']['pagination']['results_per_page'];
+        $resultsPerPage = $this->app['config']['pagination']['results_per_page'];
 
-        $connection = $app['db'];
-        $paginator = $app['knp_paginator'];
+        $connection = $this->app['db'];
+        $paginator = $this->app['knp_paginator'];
 
         $query = $connection->createQueryBuilder();
         $query->select('*')->from('sprzedaz', 's');
@@ -45,7 +42,7 @@ class PageController
         $statement = $connection->executeQuery($query->getSql());
         $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
-        $view = $app->renderView('page/introduction.html.twig', ['data' => $data, 'pagination' => $pagination]);
+        $view = $this->app->renderView('page/introduction.html.twig', ['data' => $data, 'pagination' => $pagination]);
 
         return new Response($view);
     }
@@ -53,12 +50,13 @@ class PageController
     /**
      * Renders page about database structure.
      *
-     * @param BD2Application $app
      * @return Response
      */
-    public function structureAction(BD2Application $app)
+    public function structureAction()
     {
-        $view = $app->renderView('page/structure.html.twig');
+        $structureSQL = $this->getFile('sql/structure.sql');
+
+        $view = $this->app->renderView('page/structure.html.twig', ['structureSQL' => $structureSQL]);
 
         return new Response($view);
     }
@@ -66,12 +64,11 @@ class PageController
     /**
      * Renders page about database data.
      *
-     * @param BD2Application $app
      * @return Response
      */
-    public function dataAction(BD2Application $app)
+    public function dataAction()
     {
-        $view = $app->renderView('page/data.html.twig');
+        $view = $this->app->renderView('page/data.html.twig');
 
         return new Response($view);
     }
@@ -79,12 +76,11 @@ class PageController
     /**
      * Renders page about data import.
      *
-     * @param BD2Application $app
      * @return Response
      */
-    public function importAction(BD2Application $app)
+    public function importAction()
     {
-        $view = $app->renderView('page/import.html.twig');
+        $view = $this->app->renderView('page/import.html.twig');
 
         return new Response($view);
     }
@@ -92,12 +88,11 @@ class PageController
     /**
      * Renders page about data analysis.
      *
-     * @param BD2Application $app
      * @return Response
      */
-    public function analysisAction(BD2Application $app)
+    public function analysisAction()
     {
-        $view = $app->renderView('page/analysis.html.twig');
+        $view = $this->app->renderView('page/analysis.html.twig');
 
         return new Response($view);
     }
@@ -105,12 +100,11 @@ class PageController
     /**
      * Renders page about authors.
      *
-     * @param BD2Application $app
      * @return Response
      */
-    public function authorsAction(BD2Application $app)
+    public function authorsAction()
     {
-        $view = $app->renderView('page/authors.html.twig');
+        $view = $this->app->renderView('page/authors.html.twig');
 
         return new Response($view);
     }

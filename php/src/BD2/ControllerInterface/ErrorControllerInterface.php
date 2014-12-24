@@ -2,8 +2,6 @@
 
 namespace BD2\ControllerInterface;
 
-use Silex\Application;
-use BD2\BD2Application;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -14,8 +12,7 @@ interface ErrorControllerInterface
     /**
      * Renders error page.
      *
-     * @param BD2Application $app
      * @return Response
      */
-    public function errorAction(BD2Application $app);
+    public function errorAction();
 }

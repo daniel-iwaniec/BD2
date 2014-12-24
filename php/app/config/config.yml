@@ -8,8 +8,14 @@ twig:
         prism: 'assets/prism'
 
 services:
-    bd2.controller.page: '\BD2\Controller\PageController'
-    bd2.controller.error: '\BD2\Controller\ErrorController'
+    bd2.controller.page:
+        class: '\BD2\Controller\PageController'
+        tags:
+            - 'bd2.controller'
+    bd2.controller.error:
+        class: '\BD2\Controller\ErrorController'
+        tags:
+            - 'bd2.controller'
 
 error:
     service: 'bd2.controller.error'
@@ -18,3 +24,7 @@ pagination:
     results_per_page: 20
     templates:
         pagination: 'pagination.html.twig'
+
+resources:
+    root: 'src/BD2/Resources'
+    files: 'files'
