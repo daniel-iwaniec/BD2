@@ -22,7 +22,7 @@ class TableController extends AbstractController
         /** @var \Doctrine\DBAL\Driver\Statement $statement */
         /** @var \Knp\Component\Pager\Paginator $paginator */
         /** @var \Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination $pagination */
-        sleep(2);
+
         $page = $request->get('page', 1);
         $table = $request->get('table', null);
 
