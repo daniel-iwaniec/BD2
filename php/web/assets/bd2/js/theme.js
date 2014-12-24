@@ -25,21 +25,27 @@ $('.disposable-alert .close').on('click', function (event) {
 function ajaxContent(event) {
     event.preventDefault();
     var contentElement = $(this).parents('.ajax-content');
+    var pagination = contentElement.find('.pagination');
+    var table = contentElement.find('.table');
 
-    contentElement.block();
+    var options = {message: null, baseZ: 10000, overlayCSS: {opacity: 0.2}};
+
+    pagination.block(options);
+    table.block(options);
 
     $.ajax({
-        url: $(this).attr('href')
+        url: $(this).attr('href'),
+        timeout: 10000
     }).done(function (html) {
-
         contentElement.replaceWith(html);
 
         var ajaxLinks = $('.ajax-content a');
         ajaxLinks.off('click', ajaxContent);
         ajaxLinks.on('click', ajaxContent);
+    }).fail(function () {
+        pagination.unblock();
+        table.unblock();
     });
-
-    contentElement.unblock();
 }
 
 $('.ajax-content a').on('click', ajaxContent);

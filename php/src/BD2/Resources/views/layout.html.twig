@@ -12,7 +12,9 @@
 
         <link href="{{ asset('css/bootstrap.min.css', 'bootstrap') }}" rel="stylesheet">
         <link href="{{ asset('css/bootstrap-theme.min.css', 'bootstrap') }}" rel="stylesheet">
-        <link href="{{ asset('css/prism.css', 'prism') }}" rel="stylesheet">
+        <link href="{{ asset('prism.css', 'prism') }}" rel="stylesheet">
+        <link href="{{ asset('plugins/line-numbers/prism-line-numbers.css', 'prism') }}" rel="stylesheet">
+        <link href="{{ asset('plugins/line-highlight/prism-line-highlight.css', 'prism') }}" rel="stylesheet">
         <link href="{{ asset('css/theme.css', 'bd2') }}" rel="stylesheet">
 
         <!--[if lt IE 9]>
@@ -33,7 +35,10 @@
         <script src="{{ asset('jquery.cookie.js', 'jquery.cookie') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js', 'bootstrap') }}"></script>
         <script src="{{ asset('jquery.blockUI.js', 'blockUI') }}"></script>
-        <script src="{{ asset('js/prism.js', 'prism') }}"></script>
+        <script src="{{ asset('prism.js', 'prism') }}"></script>
+        <script src="{{ asset('components/prism-sql.min.js', 'prism') }}"></script>
+        <script src="{{ asset('plugins/line-numbers/prism-line-numbers.min.js', 'prism') }}"></script>
+        <script src="{{ asset('plugins/line-highlight/prism-line-highlight.min.js', 'prism') }}"></script>
         <script src="{{ asset('js/bd2.min.js', 'bd2') }}"></script>
     </body>
 </html>

@@ -11,6 +11,7 @@ Wymanagania:
 - php_pdo_ci
 - oracle XE
 - inne?
+- testowane pod firefoxem
 
 ## Instalacja
 
