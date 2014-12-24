@@ -12,3 +12,8 @@ services:
 
 error:
     service: 'bd2.controller.error'
+
+pagination:
+    results_per_page: 20
+    templates:
+        pagination: 'pagination.html.twig'

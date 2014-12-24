@@ -16,23 +16,30 @@ class PageController
      * Renders introduction page.
      *
      * @param BD2Application $app
+     * @param Request $request
      * @return Response
      */
     public function introductionAction(BD2Application $app, Request $request)
     {
-        $page = $request->get('page', 1);
-
         /** @var \Doctrine\DBAL\Connection $connection */
-        $connection = $app['db'];
-        $query = $connection->createQueryBuilder();
+        /** @var \Knp\Component\Pager\Paginator $paginator */
+        /** @var \Doctrine\DBAL\Driver\Statement $statement */
 
+        $page = $request->get('page', 1);
+        $resultsPerPage = $app['config']['pagination']['results_per_page'];
+
+        $connection = $app['db'];
+        $paginator = $app['knp_paginator'];
+
+        $query = $connection->createQueryBuilder();
         $query->select('*')->from('sprzedaz', 's');
         $query->orderBy('id', 'asc');
 
-        $pagination = $app['knp_paginator']->paginate($query, $page, 20);
+        $pagination = $paginator->paginate($query, $page, $resultsPerPage);
 
-        $query->setFirstResult(20 * ($page - 1));
-        $query->setMaxResults(20);
+        $query->setFirstResult($resultsPerPage * ($page - 1));
+        $query->setMaxResults($resultsPerPage);
+
         $statement = $connection->executeQuery($query->getSql());
         $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
 

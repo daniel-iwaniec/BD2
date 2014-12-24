@@ -27,7 +27,7 @@ $app->register(new TwigServiceProvider(), ['twig.path' => $app['config']['twig']
 $app->register(new PaginationServiceProvider());
 $app['knp_paginator.options'] = [
     'template' => [
-        'pagination' => 'pagination.html.twig',
+        'pagination' => $app['config']['pagination']['templates']['pagination'],
     ],
 ];
 
