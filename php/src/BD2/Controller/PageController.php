@@ -29,7 +29,7 @@ class PageController
         $query->select('*')->from('sprzedaz', 's');
         $query->orderBy('id', 'asc');
 
-        $pagination = $app['knp_paginator']->paginate($query);
+        $pagination = $app['knp_paginator']->paginate($query, $page, 20);
 
         $query->setFirstResult(20 * ($page - 1));
         $query->setMaxResults(20);

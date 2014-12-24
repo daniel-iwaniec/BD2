@@ -1,7 +1,7 @@
 twig:
     paths:
-        - '../src/BD2/Resources/view'
-        - '../app/Resources/view'
+        - '../src/BD2/Resources/views'
+        - '../app/Resources/views'
     assets:
         bd2: 'assets/bd2'
         bootstrap: 'assets/bootstrap/dist'

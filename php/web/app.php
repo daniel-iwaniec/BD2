@@ -16,7 +16,6 @@ use BD2\ControllerInterface\ErrorControllerInterface;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $app = new BD2Application();
-$app['debug'] = true;
 $app->register(new YamlConfigServiceProvider('../app/config/parameters.yml.dist'));
 $app->register(new YamlConfigServiceProvider('../app/config/config.yml'));
 $app->register(new YamlConfigServiceProvider('../app/config/routing.yml'));
@@ -27,20 +26,9 @@ $app->register(new TwigServiceProvider(), ['twig.path' => $app['config']['twig']
 
 $app->register(new PaginationServiceProvider());
 $app['knp_paginator.options'] = [
-    'default_options' => [
-        'sort_field_name' => 'sort',
-        'sort_direction_name' => 'direction',
-        'filter_field_name' => 'filterField',
-        'filter_value_name' => 'filterValue',
-        'page_name' => 'page',
-        'distinct' => true,
-    ],
     'template' => [
-        'pagination' => '@knp_paginator_bundle/sliding.html.twig',
-        'filtration' => '@knp_paginator_bundle/filtration.html.twig',
-        'sortable' => '@knp_paginator_bundle/sortable_link.html.twig',
+        'pagination' => 'pagination.html.twig',
     ],
-    'page_range' => 5,
 ];
 
 $app->register(new DoctrineServiceProvider(), [
