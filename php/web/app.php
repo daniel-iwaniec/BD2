@@ -25,14 +25,20 @@ $app->register(new YamlConfigServiceProvider('../app/config/routing.yml'));
 
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new UrlGeneratorServiceProvider());
-$app->register(new TwigServiceProvider(), ['twig.path' => $app['config']['twig']['paths']]);
 
-$app->register(new PaginationServiceProvider());
-$app['knp_paginator.options'] = [
-    'template' => [
-        'pagination' => $app['config']['pagination']['templates']['pagination']
+$twigPaths = [];
+foreach ($app['config']['twig']['paths'] as $twigPath) {
+    $twigPaths[] = $app['root'] . DIRECTORY_SEPARATOR . $twigPath;
+}
+$app->register(new TwigServiceProvider(), ['twig.path' => $twigPaths]);
+
+$app->register(new PaginationServiceProvider(), [
+    'knp_paginator.options' => [
+        'template' => [
+            'pagination' => $app['config']['pagination']['templates']['pagination']
+        ]
     ]
-];
+]);
 
 $app->register(new DoctrineServiceProvider(), [
     'db.options' => [
@@ -65,7 +71,23 @@ foreach ($app['config']['services'] as $serviceName => $service) {
 }
 
 foreach ($app['config']['routes'] as $routeName => $route) {
-    $app->match($route['match'], $route['action'])->bind($routeName);
+    /** @var \Silex\Controller $appRoute */
+    $appRoute = $app->{$route['type']}($route['route'], $route['action']);
+
+    if (isset($route['parameters']['default'])) {
+        foreach ($route['parameters']['default'] as $parameterDefault) {
+            $parameter = key($parameterDefault);
+            $appRoute->value($parameter, $parameterDefault[$parameter]);
+        }
+    }
+    if (isset($route['parameters']['assert'])) {
+        foreach ($route['parameters']['assert'] as $parameterAssert) {
+            $parameter = key($parameterAssert);
+            $appRoute->assert($parameter, $parameterAssert[$parameter]);
+        }
+    }
+
+    $appRoute->bind($routeName);
 }
 
 $app->before(function (Request $request, BD2Application $app) {
@@ -78,7 +100,7 @@ $app['twig'] = $app->share($app->extend('twig', function ($twig) use ($app) {
         if (!isset($app['config']['twig']['assets'][$environment])) {
             return '';
         }
-        return sprintf($app['config']['twig']['assets'][$environment] . '/%s', ltrim($asset, '/'));
+        return sprintf('/' . $app['config']['twig']['assets'][$environment] . '/%s', ltrim($asset, '/'));
     }));
     return $twig;
 }));

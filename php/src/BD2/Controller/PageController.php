@@ -34,7 +34,14 @@ class PageController extends AbstractController
         $query->orderBy('id', 'asc');
 
         $pagination = $paginator->paginate($query, $page, $resultsPerPage);
-        //$pagination->setUsedRoute('');
+
+        $pagination->getTotalItemCount();
+        $maxPage = $pagination->getTotalItemCount() / $pagination->getItemNumberPerPage();
+        if ($page > $maxPage) {
+            $this->app->abort(404);
+        }
+
+        $pagination->setUsedRoute('introduction_paginated');
 
         $query->setFirstResult($resultsPerPage * ($page - 1));
         $query->setMaxResults($resultsPerPage);

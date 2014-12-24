@@ -1,11 +1,12 @@
 twig:
     paths:
-        - '../src/BD2/Resources/views'
-        - '../app/Resources/views'
+        - 'src/BD2/Resources/views'
+        - 'app/Resources/views'
     assets:
         bd2: 'assets/bd2'
         bootstrap: 'assets/bootstrap/dist'
         prism: 'assets/prism'
+        jquery.cookie: 'assets/jquery.cookie'
 
 services:
     bd2.controller.page:

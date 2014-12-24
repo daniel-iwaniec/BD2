@@ -1,19 +1,34 @@
 routes:
     introduction:
-        match: ''
+        type: 'match'
+        route: '/'
         action: 'bd2.controller.page:introductionAction'
+    introduction_paginated:
+            type: 'get'
+            route: '/page/{page}'
+            action: 'bd2.controller.page:introductionAction'
+            parameters:
+                default:
+                    - {page: 1}
+                assert:
+                    - {page: '\d+'}
     structure:
-        match: '/struktura'
+        type: 'match'
+        route: '/struktura'
         action: 'bd2.controller.page:structureAction'
     data:
-        match: '/dane'
+        type: 'match'
+        route: '/dane'
         action: 'bd2.controller.page:dataAction'
     import:
-        match: '/import'
+        type: 'match'
+        route: '/import'
         action: 'bd2.controller.page:importAction'
     analysis:
-        match: '/analiza'
+        type: 'match'
+        route: '/analiza'
         action: 'bd2.controller.page:analysisAction'
     authors:
-        match: '/autorzy'
+        type: 'match'
+        route: '/autorzy'
         action: 'bd2.controller.page:authorsAction'
