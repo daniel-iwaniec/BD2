@@ -3,6 +3,15 @@
 Tematem projektu jest **hurtownia danych** dla składu materiałów budowlanych.
 Zakres projektu obejmuje stworzenie struktury hurtowni, przygotowanie danych oraz ich import i analizę.
 
+## Wymagania
+
+Wymanagania:
+- PHP 5.6.4
+- Apache 2.2
+- php_pdo_ci
+- oracle XE
+- inne?
+
 ## Instalacja
 
 **TODO**

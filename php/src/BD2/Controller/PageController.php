@@ -55,8 +55,16 @@ class PageController extends AbstractController
     public function structureAction()
     {
         $structureSQL = $this->getFile('sql/structure.sql');
+        $procedureDropAllSQL = $this->getFile('sql/procedure_drop_all.sql');
+        $tableBranzaSQL = $this->getFile('sql/table_branza.sql');
 
-        $view = $this->app->renderView('page/structure.html.twig', ['structureSQL' => $structureSQL]);
+        $view = $this->app->renderView('page/structure.html.twig',
+            [
+                'structureSQL' => $structureSQL,
+                'procedureDropAllSQL' => $procedureDropAllSQL,
+                'tableBranzaSQL' => $tableBranzaSQL
+            ]
+        );
 
         return new Response($view);
     }
