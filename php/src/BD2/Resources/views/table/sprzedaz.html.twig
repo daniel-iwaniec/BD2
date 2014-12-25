@@ -1,36 +1,25 @@
-<div class="row ajax-content">
-    <div class="col-md-12">
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th><abbr title="Identyfikator wiersza">id</abbr></th>
-                    <th><abbr title="Wymiar - klient">klient_id</abbr></th>
-                    <th><abbr title="Wymiar - sprzedawca">sprzedawca_id</abbr></th>
-                    <th><abbr title="Wymiar - data sprzedaży">data_sprzedazy_id</abbr></th>
-                    <th><abbr title="Wymiar - produkt">produkt_id</abbr></th>
-                    <th><abbr title="Wymiar - lokalizacja">lokalizacja_id</abbr></th>
-                    <th><abbr title="Miara - ilość">ilosc</abbr></th>
-                    <th><abbr title="Miara - wartość">wartosc</abbr></th>
-                    <th><abbr title="Miara - rabat">rabat</abbr></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for sprzedaz in data %}
-                    <tr>
-                        <td><b>{{ sprzedaz.ID }}</b></td>
-                        <td>{{ sprzedaz.KLIENT_ID }}</td>
-                        <td>{{ sprzedaz.SPRZEDAWCA_ID }}</td>
-                        <td>{{ sprzedaz.DATA_SPRZEDAZY_ID }}</td>
-                        <td>{{ sprzedaz.PRODUKT_ID }}</td>
-                        <td>{{ sprzedaz.LOKALIZACJA_ID }}</td>
-                        <td>{{ sprzedaz.ILOSC }}</td>
-                        <td>{{ sprzedaz.WARTOSC }}</td>
-                        <td>{{ sprzedaz.RABAT }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+{% extends 'table-layout.html.twig' %}
 
-        {{ knp_pagination_render(pagination) }}
-    </div>
-</div>
+{% block tableHeader %}
+    <th><abbr title="Identyfikator wiersza">id</abbr></th>
+    <th><abbr title="Wymiar - klient">klient_id</abbr></th>
+    <th><abbr title="Wymiar - sprzedawca">sprzedawca_id</abbr></th>
+    <th><abbr title="Wymiar - data sprzedaży">data_sprzedazy_id</abbr></th>
+    <th><abbr title="Wymiar - produkt">produkt_id</abbr></th>
+    <th><abbr title="Wymiar - lokalizacja">lokalizacja_id</abbr></th>
+    <th><abbr title="Miara - ilość">ilosc</abbr></th>
+    <th><abbr title="Miara - wartość">wartosc</abbr></th>
+    <th><abbr title="Miara - rabat">rabat</abbr></th>
+{% endblock %}
+
+{% block tableContent %}
+    <td><b>{{ item.ID }}</b></td>
+    <td>{{ item.KLIENT_ID }}</td>
+    <td>{{ item.SPRZEDAWCA_ID }}</td>
+    <td>{{ item.DATA_SPRZEDAZY_ID }}</td>
+    <td>{{ item.PRODUKT_ID }}</td>
+    <td>{{ item.LOKALIZACJA_ID }}</td>
+    <td>{{ item.ILOSC }}</td>
+    <td>{{ item.WARTOSC }}</td>
+    <td>{{ item.RABAT }}</td>
+{% endblock %}

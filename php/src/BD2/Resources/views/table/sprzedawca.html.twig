@@ -1,0 +1,15 @@
+{% extends 'table-layout.html.twig' %}
+
+{% block tableHeader %}
+    <th><abbr title="INTEGER">id</abbr></th>
+    <th><abbr title="INTEGER">stanowisko_id</abbr></th>
+    <th><abbr title="VARCHAR2(200)">imie</abbr></th>
+    <th><abbr title="VARCHAR2(200)">nazwisko</abbr></th>
+{% endblock %}
+
+{% block tableContent %}
+    <td><b>{{ item.ID }}</b></td>
+    <td>{{ item.STANOWISKO_ID }}</td>
+    <td>{{ item.IMIE }}</td>
+    <td>{{ item.NAZWISKO }}</td>
+{% endblock %}

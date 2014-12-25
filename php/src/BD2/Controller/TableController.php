@@ -41,7 +41,7 @@ class TableController extends AbstractController
         $pagination = $paginator->paginate($query, $page, $resultsPerPage);
 
         $pagination->getTotalItemCount();
-        $maxPage = $pagination->getTotalItemCount() / $pagination->getItemNumberPerPage();
+        $maxPage = ceil($pagination->getTotalItemCount() / $pagination->getItemNumberPerPage());
         if ($page > $maxPage) {
             $this->app->abort(404);
         }
@@ -55,7 +55,7 @@ class TableController extends AbstractController
         $statement = $connection->executeQuery($query->getSql());
         $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
-        $view = $this->app->renderView('table/sprzedaz.html.twig', ['data' => $data, 'pagination' => $pagination]);
+        $view = $this->app->renderView("table/{$table}.html.twig", ['data' => $data, 'pagination' => $pagination]);
 
         return new Response($view);
     }

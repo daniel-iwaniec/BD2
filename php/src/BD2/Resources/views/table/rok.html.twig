@@ -1,0 +1,13 @@
+{% extends 'table-layout.html.twig' %}
+
+{% block tableHeader %}
+    <th><abbr title="INTEGER">id</abbr></th>
+    <th><abbr title="INTEGER">numer</abbr></th>
+    <th><abbr title="NUMBER(1, 0)">czy_przestepny</abbr></th>
+{% endblock %}
+
+{% block tableContent %}
+    <td><b>{{ item.ID }}</b></td>
+    <td>{{ item.NUMER }}</td>
+    <td>{{ item.CZY_PRZESTEPNY }}</td>
+{% endblock %}
