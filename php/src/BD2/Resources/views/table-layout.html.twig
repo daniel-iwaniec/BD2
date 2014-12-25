@@ -1,3 +1,9 @@
+{% if not pagination.getDirection() %}
+    {% set direction = {'direction': 'asc'} %}
+{% else %}
+    {% set direction = [] %}
+{% endif %}
+
 <div class="row ajax-content">
     <div class="col-md-12">
         <table class="table table-striped table-hover">

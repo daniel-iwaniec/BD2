@@ -1,12 +1,12 @@
 {% extends 'table-layout.html.twig' %}
 
 {% block tableHeader %}
-    <th><abbr title="INTEGER">id</abbr></th>
-    <th><abbr title="INTEGER">miesiac_id</abbr></th>
-    <th><abbr title="INTEGER">numer_miesiac</abbr></th>
-    <th><abbr title="INTEGER">numer_tydzien</abbr></th>
-    <th><abbr title="VARCHAR2(50)">nazwa</abbr></th>
-    <th><abbr title="NUMBER(1)">czy_dzien_roboczy</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'miesiac_id', 'MIESIAC_ID') }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'numer_miesiac', 'NUMER_MIESIAC') }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'numer_tydzien', 'NUMER_TYDZIEN') }}</abbr></th>
+    <th><abbr title="VARCHAR2(50)">{{ knp_pagination_sortable(pagination, 'nazwa', 'NAZWA') }}</abbr></th>
+    <th><abbr title="NUMBER(1)">{{ knp_pagination_sortable(pagination, 'czy_dzien_roboczy', 'CZY_DZIEN_ROBOCZY') }}</abbr></th>
 {% endblock %}
 
 {% block tableContent %}

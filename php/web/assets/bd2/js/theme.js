@@ -33,8 +33,6 @@ function ajaxContent(event) {
     pagination.block(options);
     table.block(options);
 
-    table.find(':last-child').css('border', 'none');
-
     $.ajax({
         url: $(this).attr('href'),
         timeout: 10000

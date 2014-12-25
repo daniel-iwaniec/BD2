@@ -1,10 +1,10 @@
 {% extends 'table-layout.html.twig' %}
 
 {% block tableHeader %}
-    <th><abbr title="INTEGER">id</abbr></th>
-    <th><abbr title="INTEGER">rok_id</abbr></th>
-    <th><abbr title="INTEGER">numer</abbr></th>
-    <th><abbr title="VARCHAR2(50)">nazwa</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'rok_id', 'ROK_ID') }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'numer', 'NUMER') }}</abbr></th>
+    <th><abbr title="VARCHAR2(50)">{{ knp_pagination_sortable(pagination, 'nazwa', 'NAZWA') }}</abbr></th>
 {% endblock %}
 
 {% block tableContent %}

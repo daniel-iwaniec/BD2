@@ -1,9 +1,9 @@
 {% extends 'table-layout.html.twig' %}
 
 {% block tableHeader %}
-    <th><abbr title="INTEGER">id</abbr></th>
-    <th><abbr title="INTEGER">numer</abbr></th>
-    <th><abbr title="NUMBER(1, 0)">czy_przestepny</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'numer', 'NUMER') }}</abbr></th>
+    <th><abbr title="NUMBER(1, 0)">{{ knp_pagination_sortable(pagination, 'czy_przestepny', 'CZY_PRZESTEPNY') }}</abbr></th>
 {% endblock %}
 
 {% block tableContent %}

@@ -1,9 +1,9 @@
 {% extends 'table-layout.html.twig' %}
 
 {% block tableHeader %}
-    <th><abbr title="INTEGER">id</abbr></th>
-    <th><abbr title="INTEGER">produkt_typ_id</abbr></th>
-    <th><abbr title="VARCHAR2(200)">nazwa</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'produkt_typ_id', 'PRODUKT_TYP_ID') }}</abbr></th>
+    <th><abbr title="VARCHAR2(200)">{{ knp_pagination_sortable(pagination, 'nazwa', 'NAZWA') }}</abbr></th>
 {% endblock %}
 
 {% block tableContent %}

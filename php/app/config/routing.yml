@@ -1,26 +1,20 @@
 routes:
     table:
         type: 'get'
-        route: '/table/{table}/{page}'
+        route: '/table/{table}/{sort}/{direction}/{page}'
         action: 'bd2.controller.table:readAction'
         parameters:
             default:
+                - {sort: 'ID'}
+                - {direction: 'asc'}
                 - {page: 1}
             assert:
+                - {direction: 'asc|desc'}
                 - {page: '\d+'}
     introduction:
         type: 'match'
         route: '/'
         action: 'bd2.controller.page:introductionAction'
-    introduction_paginated:
-            type: 'get'
-            route: '/strona/{page}'
-            action: 'bd2.controller.page:introductionAction'
-            parameters:
-                default:
-                    - {page: 1}
-                assert:
-                    - {page: '\d+'}
     structure:
         type: 'match'
         route: '/struktura'

@@ -23,6 +23,7 @@ twig:
 pagination:
     results_per_page: 20
     templates:
+        sortable: 'sortable.html.twig'
         pagination: 'pagination.html.twig'
 
 resources:
@@ -46,4 +47,3 @@ tables:
 
 error:
     service: 'bd2.controller.error'
-

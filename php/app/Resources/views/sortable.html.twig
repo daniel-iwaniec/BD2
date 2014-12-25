@@ -1,0 +1,10 @@
+{% set direction = null %}
+
+<a{% for attr, value in options %}
+    {% if attr != 'title' %}
+        {{ attr }}="{{ value }}"
+    {% endif %}
+    {% if attr == 'class' and (value == 'asc' or value == 'desc') %}
+        {% set direction = value %}
+    {% endif %}
+{% endfor %}>{{ title }}{% if direction %}&nbsp;<span class="glyphicon {% if direction == 'asc'%}glyphicon-chevron-up{% else %}glyphicon-chevron-down{% endif %}" aria-hidden="true"></span>{% endif %}</a>

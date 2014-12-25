@@ -1,15 +1,15 @@
 {% extends 'table-layout.html.twig' %}
 
 {% block tableHeader %}
-    <th><abbr title="Identyfikator wiersza">id</abbr></th>
-    <th><abbr title="Wymiar - klient">klient_id</abbr></th>
-    <th><abbr title="Wymiar - sprzedawca">sprzedawca_id</abbr></th>
-    <th><abbr title="Wymiar - data sprzedaży">data_sprzedazy_id</abbr></th>
-    <th><abbr title="Wymiar - produkt">produkt_id</abbr></th>
-    <th><abbr title="Wymiar - lokalizacja">lokalizacja_id</abbr></th>
-    <th><abbr title="Miara - ilość">ilosc</abbr></th>
-    <th><abbr title="Miara - wartość">wartosc</abbr></th>
-    <th><abbr title="Miara - rabat">rabat</abbr></th>
+    <th><abbr title="Identyfikator rekordu">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
+    <th><abbr title="Wymiar - klient">{{ knp_pagination_sortable(pagination, 'klient_id', 'KLIENT_ID') }}</abbr></th>
+    <th><abbr title="Wymiar - sprzedawca">{{ knp_pagination_sortable(pagination, 'sprzedawca_id', 'SPRZEDAWCA_ID') }}</abbr></th>
+    <th><abbr title="Wymiar - data sprzedaży">{{ knp_pagination_sortable(pagination, 'data_sprzedazy_id', 'DATA_SPRZEDAZY_ID') }}</abbr></th>
+    <th><abbr title="Wymiar - produkt">{{ knp_pagination_sortable(pagination, 'produkt_id', 'PRODUKT_ID') }}</abbr></th>
+    <th><abbr title="Wymiar - lokalizacja">{{ knp_pagination_sortable(pagination, 'lokalizacja_id', 'LOKALIZACJA_ID') }}</abbr></th>
+    <th><abbr title="Miara - ilość">{{ knp_pagination_sortable(pagination, 'ilosc', 'ILOSC') }}</abbr></th>
+    <th><abbr title="Miara - wartość">{{ knp_pagination_sortable(pagination, 'wartosc', 'WARTOSC') }}</abbr></th>
+    <th><abbr title="Miara - rabat">{{ knp_pagination_sortable(pagination, 'rabat', 'RABAT') }}</abbr></th>
 {% endblock %}
 
 {% block tableContent %}

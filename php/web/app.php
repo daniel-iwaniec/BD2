@@ -35,6 +35,7 @@ $app->register(new TwigServiceProvider(), ['twig.path' => $twigPaths]);
 $app->register(new PaginationServiceProvider(), [
     'knp_paginator.options' => [
         'template' => [
+            'sortable' => $app['config']['pagination']['templates']['sortable'],
             'pagination' => $app['config']['pagination']['templates']['pagination']
         ]
     ]

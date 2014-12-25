@@ -24,6 +24,8 @@ class TableController extends AbstractController
         /** @var \Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination $pagination */
 
         $page = $request->get('page', 1);
+        $sort = $request->get('sort', 'id');
+        $direction = $request->get('direction', 'asc') === 'asc' ? 'asc' : 'desc';
         $table = $request->get('table', null);
 
         if (!in_array($table, $this->app['config']['tables'])) {
@@ -36,22 +38,20 @@ class TableController extends AbstractController
 
         $query = $connection->createQueryBuilder();
         $query->select('*')->from($table, 'table_alias');
-        $query->orderBy('id', 'asc');
+        $query->orderBy($connection->quoteIdentifier($sort), $direction);
 
         $pagination = $paginator->paginate($query, $page, $resultsPerPage);
-
         $pagination->getTotalItemCount();
         $maxPage = ceil($pagination->getTotalItemCount() / $pagination->getItemNumberPerPage());
         if ($page > $maxPage) {
             $this->app->abort(404);
         }
-
         $pagination->setUsedRoute('table');
         $pagination->setParam('table', $table);
+        $pagination->setParam('sort', $sort);
 
         $query->setFirstResult($resultsPerPage * ($page - 1));
         $query->setMaxResults($resultsPerPage);
-
         $statement = $connection->executeQuery($query->getSql());
         $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
