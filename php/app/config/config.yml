@@ -19,9 +19,6 @@ twig:
     assets:
         bd2: 'assets/bd2'
         bootstrap: 'assets/bootstrap/dist'
-        prism: 'assets/prismjs'
-        jquery.cookie: 'assets/jquery.cookie'
-        blockUI: 'assets/blockui'
 
 pagination:
     results_per_page: 20

@@ -2,20 +2,15 @@
 <html lang="pl">
     <head>
         <meta charset="utf-8">
+
+        <title>PŚk BD2{% if title %} | {{ title }}{% endif %}</title>
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Politechnika Świętokrzyska - Bazy Danych 2 - Projekt.">
         <meta name="author" content="Daniel Iwaniec, Artur Kałuża">
         <link rel="icon" href="favicon.ico">
-
-        <title>PŚk BD2{% if title %} | {{ title }}{% endif %}</title>
-
-        <link href="{{ asset('css/bootstrap.min.css', 'bootstrap') }}" rel="stylesheet">
-        <link href="{{ asset('css/bootstrap-theme.min.css', 'bootstrap') }}" rel="stylesheet">
-        <link href="{{ asset('prism.css', 'prism') }}" rel="stylesheet">
-        <link href="{{ asset('plugins/line-numbers/prism-line-numbers.css', 'prism') }}" rel="stylesheet">
-        <link href="{{ asset('plugins/line-highlight/prism-line-highlight.css', 'prism') }}" rel="stylesheet">
-        <link href="{{ asset('css/theme.css', 'bd2') }}" rel="stylesheet">
+        <link href="{{ asset('css/bd2.min.css', 'bd2') }}" rel="stylesheet">
 
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -31,14 +26,6 @@
             {% include 'footer.html.twig' %}
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="{{ asset('jquery.cookie.js', 'jquery.cookie') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js', 'bootstrap') }}"></script>
-        <script src="{{ asset('jquery.blockUI.js', 'blockUI') }}"></script>
-        <script src="{{ asset('prism.js', 'prism') }}"></script>
-        <script src="{{ asset('components/prism-sql.min.js', 'prism') }}"></script>
-        <script src="{{ asset('plugins/line-numbers/prism-line-numbers.min.js', 'prism') }}"></script>
-        <script src="{{ asset('plugins/line-highlight/prism-line-highlight.min.js', 'prism') }}"></script>
         <script src="{{ asset('js/bd2.min.js', 'bd2') }}"></script>
     </body>
 </html>

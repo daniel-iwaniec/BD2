@@ -2,7 +2,6 @@
 
 namespace BD2\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -13,43 +12,11 @@ class PageController extends AbstractController
     /**
      * Renders introduction page.
      *
-     * @param Request $request
      * @return Response
      */
-    public function introductionAction(Request $request)
+    public function introductionAction()
     {
-        /** @var \Doctrine\DBAL\Connection $connection */
-        /** @var \Doctrine\DBAL\Driver\Statement $statement */
-        /** @var \Knp\Component\Pager\Paginator $paginator */
-        /** @var \Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination $pagination */
-
-        $page = $request->get('page', 1);
-        $resultsPerPage = $this->app['config']['pagination']['results_per_page'];
-
-        $connection = $this->app['db'];
-        $paginator = $this->app['knp_paginator'];
-
-        $query = $connection->createQueryBuilder();
-        $query->select('*')->from('sprzedaz', 's');
-        $query->orderBy('id', 'asc');
-
-        $pagination = $paginator->paginate($query, $page, $resultsPerPage);
-
-        $pagination->getTotalItemCount();
-        $maxPage = $pagination->getTotalItemCount() / $pagination->getItemNumberPerPage();
-        if ($page > $maxPage) {
-            $this->app->abort(404);
-        }
-
-        $pagination->setUsedRoute('introduction_paginated');
-
-        $query->setFirstResult($resultsPerPage * ($page - 1));
-        $query->setMaxResults($resultsPerPage);
-
-        $statement = $connection->executeQuery($query->getSql());
-        $data = $statement->fetchAll(\PDO::FETCH_ASSOC);
-
-        $view = $this->app->renderView('page/introduction.html.twig', ['data' => $data, 'pagination' => $pagination]);
+        $view = $this->app->renderView('page/introduction.html.twig');
 
         return new Response($view);
     }

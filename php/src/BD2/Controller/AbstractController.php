@@ -17,7 +17,7 @@ abstract class AbstractController
      *
      * @param BD2Application $app
      */
-    function __construct(BD2Application $app)
+    public function __construct(BD2Application $app)
     {
         $this->app = $app;
     }

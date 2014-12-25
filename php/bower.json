@@ -6,6 +6,7 @@
     "bootstrap": "~3.3.1",
     "jquery.cookie": "~1.4.1",
     "blockui": "*",
-    "prismjs": "*"
+    "prismjs": "*",
+    "jQuery": "~2.1.3"
   }
 }

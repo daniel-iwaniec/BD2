@@ -28,10 +28,12 @@ function ajaxContent(event) {
     var pagination = contentElement.find('.pagination');
     var table = contentElement.find('.table');
 
-    var options = {message: null, baseZ: 10000, overlayCSS: {opacity: 0.2}};
+    var options = {message: null, baseZ: 10000, overlayCSS: {opacity: 0.2, cursor: 'progress'}};
 
     pagination.block(options);
     table.block(options);
+
+    table.find(':last-child').css('border', 'none');
 
     $.ajax({
         url: $(this).attr('href'),
