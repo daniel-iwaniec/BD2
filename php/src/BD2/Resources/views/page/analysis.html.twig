@@ -6,11 +6,17 @@
         <h1>Analiza danych hurtowni <sup><small><span class="label label-default">Projekt</span></small></sup></h1>
 
         <p>
-            .
+            Dane zostały przykładowo zanalizowane za pomocą rozszerzeń <strong>SQL</strong>.<br>
+            Zapytanie wykorzystują m.in. <code>ROLLUP</code>, <code>CUBE</code>, <code>GROPUING SETS</code>, <code>PARTITION BY</code> oraz <code>PARTITION BY &hellip; ORDER BY</code>.
         </p>
         <p><a href="{{ url('authors') }}" class="btn btn-primary btn-lg" role="button" data-toggle="tooltip" data-placement="right" title="projektu BD2">Zobacz autorów &raquo;</a></p>
     </div>
 
-    <div class="page-header"><h1>Analiza</h1></div>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">zapytanie</span></small></sup> Zapytania wykorzystujące <code>ROLLUP</code></h1></div>
+    <h2><sup><small><span class="label label-info">rollup</span></small></sup> Przykład numer 1</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
     <div class="well">Lorem ipsum dolor sit amet.</div>
 {% endblock %}
