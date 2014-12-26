@@ -1,6 +1,6 @@
 CREATE TABLE miesiac (
   id     INTEGER      NOT NULL,
-  rok_id INTEGER,
+  rok_id INTEGER      NOT NULL,
   numer  INTEGER      NOT NULL,
   nazwa  VARCHAR2(50) NOT NULL,
 

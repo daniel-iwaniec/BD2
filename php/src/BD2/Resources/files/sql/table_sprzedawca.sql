@@ -1,6 +1,6 @@
 CREATE TABLE sprzedawca (
   id            INTEGER       NOT NULL,
-  stanowisko_id INTEGER,
+  stanowisko_id INTEGER       NOT NULL,
   imie          VARCHAR2(200) NOT NULL,
   nazwisko      VARCHAR2(200) NOT NULL,
 

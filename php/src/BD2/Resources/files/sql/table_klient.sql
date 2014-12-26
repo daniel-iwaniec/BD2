@@ -1,6 +1,6 @@
 CREATE TABLE klient (
   id        INTEGER       NOT NULL,
-  branza_id INTEGER,
+  branza_id INTEGER       NOT NULL,
   nazwa     VARCHAR2(200) NOT NULL,
 
   CONSTRAINT klient_pk        PRIMARY KEY (id),

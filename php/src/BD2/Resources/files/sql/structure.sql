@@ -21,7 +21,7 @@ CREATE TABLE branza (
 
 CREATE TABLE klient (
   id        INTEGER       NOT NULL,
-  branza_id INTEGER,
+  branza_id INTEGER       NOT NULL,
   nazwa     VARCHAR2(200) NOT NULL,
   CONSTRAINT klient_pk        PRIMARY KEY (id),
   CONSTRAINT klient_branza_fk FOREIGN KEY (branza_id) REFERENCES branza (id)
@@ -35,7 +35,7 @@ CREATE TABLE stanowisko (
 
 CREATE TABLE sprzedawca (
   id            INTEGER       NOT NULL,
-  stanowisko_id INTEGER,
+  stanowisko_id INTEGER       NOT NULL,
   imie          VARCHAR2(200) NOT NULL,
   nazwisko      VARCHAR2(200) NOT NULL,
   CONSTRAINT sprzedawca_pk            PRIMARY KEY (id),
@@ -51,7 +51,7 @@ CREATE TABLE rok (
 
 CREATE TABLE miesiac (
   id     INTEGER      NOT NULL,
-  rok_id INTEGER,
+  rok_id INTEGER      NOT NULL,
   numer  INTEGER      NOT NULL,
   nazwa  VARCHAR2(50) NOT NULL,
   CONSTRAINT miesiac_pk     PRIMARY KEY (id),
