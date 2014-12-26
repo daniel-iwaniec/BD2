@@ -81,17 +81,21 @@ pre.language-sql {
   }
 }
 
-.header-badge-template() {
+.header-template() {
+  font-weight: 700;
   .badge {
     vertical-align: middle;
   }
-}
-
-.generate-header-badge(@n, @i: 1) when (@i =< @n) {
-  h@{i} {
-    .header-badge-template();
+  strong {
+    font-weight: 900;
   }
-  .generate-header-badge(@n, (@i + 1));
 }
 
-.generate-header-badge(6);
+.generate-header-template(@n, @i: 1) when (@i =< @n) {
+  h@{i} {
+    .header-template();
+  }
+  .generate-header-template(@n, (@i + 1));
+}
+
+.generate-header-template(6);
