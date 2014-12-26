@@ -28,15 +28,37 @@ class PageController extends AbstractController
      */
     public function structureAction()
     {
-        $structureSQL = $this->getFile('sql/structure.sql');
         $procedureDropAllSQL = $this->getFile('sql/procedure_drop_all.sql');
         $tableBranzaSQL = $this->getFile('sql/table_branza.sql');
+        $tableKlientSQL = $this->getFile('sql/table_klient.sql');
+        $tableStanowiskoSQL = $this->getFile('sql/table_stanowisko.sql');
+        $tableSprzedawcaSQL = $this->getFile('sql/table_sprzedawca.sql');
+        $tableRokSQL = $this->getFile('sql/table_rok.sql');
+        $tableMiesiacSQL = $this->getFile('sql/table_miesiac.sql');
+        $tableDataSprzedazySQL = $this->getFile('sql/table_data_sprzedazy.sql');
+        $tableProduktTypSQL = $this->getFile('sql/table_produkt_typ.sql');
+        $tableProduktSQL = $this->getFile('sql/table_produkt.sql');
+        $tableWojewodztwoSQL = $this->getFile('sql/table_wojewodztwo.sql');
+        $tableMiastoSQL = $this->getFile('sql/table_miasto.sql');
+        $tableLokalizacjaSQL = $this->getFile('sql/table_lokalizacja.sql');
+        $tableSprzedazSQL = $this->getFile('sql/table_sprzedaz.sql');
 
         $view = $this->app->renderView('page/structure.html.twig',
             [
-                'structureSQL' => $structureSQL,
                 'procedureDropAllSQL' => $procedureDropAllSQL,
-                'tableBranzaSQL' => $tableBranzaSQL
+                'tableBranzaSQL' => $tableBranzaSQL,
+                'tableKlientSQL' => $tableKlientSQL,
+                'tableStanowiskoSQL' => $tableStanowiskoSQL,
+                'tableSprzedawcaSQL' => $tableSprzedawcaSQL,
+                'tableRokSQL' => $tableRokSQL,
+                'tableMiesiacSQL' => $tableMiesiacSQL,
+                'tableDataSprzedazySQL' => $tableDataSprzedazySQL,
+                'tableProduktTypSQL' => $tableProduktTypSQL,
+                'tableProduktSQL' => $tableProduktSQL,
+                'tableWojewodztwoSQL' => $tableWojewodztwoSQL,
+                'tableMiastoSQL' => $tableMiastoSQL,
+                'tableLokalizacjaSQL' => $tableLokalizacjaSQL,
+                'tableSprzedazSQL' => $tableSprzedazSQL,
             ]
         );
 
