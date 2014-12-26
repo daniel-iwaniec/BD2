@@ -3,64 +3,285 @@
 
 {% block content %}
     <div class="jumbotron">
-        <h1>Bazy Danych&nbsp;2 <sup><small><span class="label label-default">Projekt</span></small></sup></h1>
+        <h1>Dane hurtowni danych <sup><small><span class="label label-default">Projekt</span></small></sup></h1>
 
         <p>
-            Lorem ipsum dolor sit amet.
+            Dane zostały przygotowane w formie plików <strong>CSV</strong>.<br>
+            Źródłem danych były skrypty <strong>PHP</strong> bezpośrednio generujące dane oraz parsujące interetowe katalogi.
         </p>
         <p><a href="{{ url('import') }}" class="btn btn-primary btn-lg" role="button" data-toggle="tooltip" data-placement="right" title="za pomocą sqlloader'a">Zobacz import &raquo;</a></p>
     </div>
 
-    <div class="page-header"><h1>Dane</h1></div>
-    <h2><sup><small><span class="label label-primary">wymiar klient</span></small></sup> Dane tabeli <strong>branza</strong> <span class="badge">5 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar klient</span></small></sup> Dane tabeli <strong>branza</strong> <span class="badge">5 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableBranzaCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'branza'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar klient</span></small></sup> Dane tabeli <strong>klient</strong> <span class="badge">100 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar klient</span></small></sup> Dane tabeli <strong>klient</strong> <span class="badge">100 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableKlientCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'klient'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar sprzedawca</span></small></sup> Dane tabeli <strong>stanowisko</strong> <span class="badge">5 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar sprzedawca</span></small></sup> Dane tabeli <strong>stanowisko</strong> <span class="badge">5 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableStanowiskoCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'stanowisko'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar sprzedawca</span></small></sup> Dane tabeli <strong>sprzedawca</strong> <span class="badge">50 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar sprzedawca</span></small></sup> Dane tabeli <strong>sprzedawca</strong> <span class="badge">50 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableSprzedawcaCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'sprzedawca'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Dane tabeli <strong>rok</strong> <span class="badge">5 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Dane tabeli <strong>rok</strong> <span class="badge">5 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableRokCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'rok'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Dane tabeli <strong>miesiac</strong> <span class="badge">60 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Dane tabeli <strong>miesiac</strong> <span class="badge">60 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableMiesiacCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'miesiac'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Dane tabeli <strong>data_sprzedazy</strong> <span class="badge">1826 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Dane tabeli <strong>data_sprzedazy</strong> <span class="badge">1826 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableDataSprzedazyCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'data_sprzedazy'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar produkt</span></small></sup> Dane tabeli <strong>produkt_typ</strong> <span class="badge">24 rekordy</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar produkt</span></small></sup> Dane tabeli <strong>produkt_typ</strong> <span class="badge">24 rekordy</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableProduktTypCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'produkt_typ'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar produkt</span></small></sup> Dane tabeli <strong>produkt</strong> <span class="badge">1190 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar produkt</span></small></sup> Dane tabeli <strong>produkt</strong> <span class="badge">1190 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="well">
+                {% for line in tableProduktCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'produkt'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Dane tabeli <strong>wojewodztwo</strong> <span class="badge">16 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Dane tabeli <strong>wojewodztwo</strong> <span class="badge">16 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableWojewodztwoCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'wojewodztwo'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Dane tabeli <strong>miasto</strong> <span class="badge">32 rekordy</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Dane tabeli <strong>miasto</strong> <span class="badge">32 rekordy</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableMiastoCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'miasto'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Dane tabeli <strong>lokalizacja</strong> <span class="badge">64 rekordy</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Dane tabeli <strong>lokalizacja</strong> <span class="badge">64 rekordy</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableLokalizacjaCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'lokalizacja'})) }}
     <div class="well">Opis tych danych.</div>
 
-    <h2><sup><small><span class="label label-success">tabela faktów</span></small></sup> Dane tabeli <strong>sprzedaz</strong> <span class="badge">5000 rekordów</span></h2>
+    <div class="page-header"><h1><sup><small><span class="label label-success">tabela faktów</span></small></sup> Dane tabeli <strong>sprzedaz</strong> <span class="badge">5000 rekordów</span></h1></div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="well">
+                {% for line in tableSprzedazCSV %}
+                    {{ line }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-success panel-csv">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Dane <strong>.csv</strong></h3>
+                </div>
+                <div class="panel-body">Opis danych.</div>
+            </div>
+        </div>
+    </div>
     {{ render(url('table', {'table': 'sprzedaz'})) }}
     <div class="well">Opis tych danych.</div>
 {% endblock %}

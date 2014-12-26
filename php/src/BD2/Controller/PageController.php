@@ -58,7 +58,7 @@ class PageController extends AbstractController
                 'tableWojewodztwoSQL' => $tableWojewodztwoSQL,
                 'tableMiastoSQL' => $tableMiastoSQL,
                 'tableLokalizacjaSQL' => $tableLokalizacjaSQL,
-                'tableSprzedazSQL' => $tableSprzedazSQL,
+                'tableSprzedazSQL' => $tableSprzedazSQL
             ]
         );
 
@@ -72,7 +72,35 @@ class PageController extends AbstractController
      */
     public function dataAction()
     {
-        $view = $this->app->renderView('page/data.html.twig');
+        $tableBranzaCSV = $this->getFile('csv/branza.csv', 10);
+        $tableKlientCSV = $this->getFile('csv/klient.csv', 10);
+        $tableStanowiskoCSV = $this->getFile('csv/stanowisko.csv', 10);
+        $tableSprzedawcaCSV = $this->getFile('csv/sprzedawca.csv', 10);
+        $tableRokCSV = $this->getFile('csv/rok.csv', 10);
+        $tableMiesiacCSV = $this->getFile('csv/miesiac.csv', 10);
+        $tableDataSprzedazyCSV = $this->getFile('csv/data_sprzedazy.csv', 10);
+        $tableProduktTypCSV = $this->getFile('csv/produkt_typ.csv', 10);
+        $tableProduktCSV = $this->getFile('csv/produkt.csv', 10);
+        $tableWojewodztwoCSV = $this->getFile('csv/wojewodztwo.csv', 10);
+        $tableMiastoCSV = $this->getFile('csv/miasto.csv', 10);
+        $tableLokalizacjaCSV = $this->getFile('csv/lokalizacja.csv', 10);
+        $tableSprzedazCSV = $this->getFile('csv/sprzedaz.csv', 10);
+
+        $view = $this->app->renderView('page/data.html.twig', [
+            'tableBranzaCSV' => $tableBranzaCSV,
+            'tableKlientCSV' => $tableKlientCSV,
+            'tableStanowiskoCSV' => $tableStanowiskoCSV,
+            'tableSprzedawcaCSV' => $tableSprzedawcaCSV,
+            'tableRokCSV' => $tableRokCSV,
+            'tableMiesiacCSV' => $tableMiesiacCSV,
+            'tableDataSprzedazyCSV' => $tableDataSprzedazyCSV,
+            'tableProduktTypCSV' => $tableProduktTypCSV,
+            'tableProduktCSV' => $tableProduktCSV,
+            'tableWojewodztwoCSV' => $tableWojewodztwoCSV,
+            'tableMiastoCSV' => $tableMiastoCSV,
+            'tableLokalizacjaCSV' => $tableLokalizacjaCSV,
+            'tableSprzedazCSV' => $tableSprzedazCSV
+        ]);
 
         return new Response($view);
     }
