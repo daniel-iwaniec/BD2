@@ -1,5 +1,14 @@
 {% extends 'table-layout.html.twig' %}
 
+{% block tableFiltration %}
+    {{ knp_pagination_filter(pagination, {
+        'ID': 'id',
+        'MIASTO_ID': 'miasto_id',
+        'ULICA': 'ulica',
+        'KOD_POCZTOWY': 'kod_pocztowy'
+    }, {'button': 'Szukaj'}) }}
+{% endblock %}
+
 {% block tableHeader %}
     <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
     <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'miasto_id', 'MIASTO_ID') }}</abbr></th>

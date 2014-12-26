@@ -36,6 +36,7 @@ $app->register(new PaginationServiceProvider(), [
     'knp_paginator.options' => [
         'template' => [
             'sortable' => $app['config']['pagination']['templates']['sortable'],
+            'filtration' => $app['config']['pagination']['templates']['filtration'],
             'pagination' => $app['config']['pagination']['templates']['pagination']
         ]
     ]

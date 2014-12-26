@@ -23,10 +23,12 @@ class TableController extends AbstractController
         /** @var \Knp\Component\Pager\Paginator $paginator */
         /** @var \Knp\Bundle\PaginatorBundle\Pagination\SlidingPagination $pagination */
 
-        $page = $request->get('page', 1);
-        $sort = $request->get('sort', 'id');
-        $direction = $request->get('direction', 'asc') === 'asc' ? 'asc' : 'desc';
         $table = $request->get('table', null);
+        $page = $request->get('page');
+        $sort = $request->get('sort');
+        $direction = $request->get('direction') === 'asc' ? 'asc' : 'desc';
+        $filterField = $request->get('filterField');
+        $filterValue = $request->get('filterValue', '');
 
         if (!in_array($table, $this->app['config']['tables'])) {
             $this->app->abort(404);
@@ -39,16 +41,24 @@ class TableController extends AbstractController
         $query = $connection->createQueryBuilder();
         $query->select('*')->from($table, 'table_alias');
         $query->orderBy($connection->quoteIdentifier($sort), $direction);
+        if ($filterField && $filterValue) {
+            if (ctype_digit((string)$filterValue)) {
+                $query->where("{$connection->quoteIdentifier($filterField)} = {$connection->quote($filterValue)}");
+            } else {
+                $query->where("LOWER({$connection->quoteIdentifier($filterField)}) LIKE LOWER({$connection->quote('%' . $filterValue . '%')})");
+            }
+        }
 
         $pagination = $paginator->paginate($query, $page, $resultsPerPage);
         $pagination->getTotalItemCount();
-        $maxPage = ceil($pagination->getTotalItemCount() / $pagination->getItemNumberPerPage());
-        if ($page > $maxPage) {
-            $this->app->abort(404);
-        }
+
         $pagination->setUsedRoute('table');
         $pagination->setParam('table', $table);
+        $pagination->setParam('page', $page);
         $pagination->setParam('sort', $sort);
+        $pagination->setParam('direction', $direction);
+        $pagination->setParam('filterField', $filterField);
+        $pagination->setParam('filterValue', $filterValue);
 
         $query->setFirstResult($resultsPerPage * ($page - 1));
         $query->setMaxResults($resultsPerPage);

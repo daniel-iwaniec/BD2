@@ -1,5 +1,19 @@
 {% extends 'table-layout.html.twig' %}
 
+{% block tableFiltration %}
+    {{ knp_pagination_filter(pagination, {
+        'ID': 'id',
+        'KLIENT_ID': 'klient_id',
+        'SPRZEDAWCA_ID': 'sprzedawca_id',
+        'DATA_SPRZEDAZY_ID': 'data_sprzedazy_id',
+        'PRODUKT_ID': 'produkt_id',
+        'LOKALIZACJA_ID': 'lokalizacja_id',
+        'ILOSC': 'ilosc',
+        'WARTOSC': 'wartosc',
+        'RABAT': 'rabat'
+    }, {'button': 'Szukaj'}) }}
+{% endblock %}
+
 {% block tableHeader %}
     <th><abbr title="Identyfikator rekordu">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
     <th><abbr title="Wymiar - klient">{{ knp_pagination_sortable(pagination, 'klient_id', 'KLIENT_ID') }}</abbr></th>

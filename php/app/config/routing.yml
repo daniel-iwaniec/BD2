@@ -1,16 +1,18 @@
 routes:
     table:
         type: 'get'
-        route: '/table/{table}/{sort}/{direction}/{page}'
+        route: '/table/{table}/{page}/{sort}/{direction}/{filterField}/{filterValue}'
         action: 'bd2.controller.table:readAction'
         parameters:
             default:
+                - {page: 1}
                 - {sort: 'ID'}
                 - {direction: 'asc'}
-                - {page: 1}
+                - {filterField: null}
+                - {filterValue: null}
             assert:
-                - {direction: 'asc|desc'}
                 - {page: '\d+'}
+                - {direction: 'asc|desc'}
     introduction:
         type: 'match'
         route: '/'

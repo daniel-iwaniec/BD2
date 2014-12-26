@@ -1,5 +1,13 @@
 {% extends 'table-layout.html.twig' %}
 
+{% block tableFiltration %}
+    {{ knp_pagination_filter(pagination, {
+        'ID': 'id',
+        'BRANZA_ID': 'branza_id',
+        'NAZWA': 'nazwa'
+    }, {'button': 'Szukaj'}) }}
+{% endblock %}
+
 {% block tableHeader %}
     <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
     <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'branza_id', 'BRANZA_ID') }}</abbr></th>

@@ -42,6 +42,71 @@ function ajaxContent(event) {
         var ajaxLinks = $('.ajax-content a');
         ajaxLinks.off('click', ajaxContent);
         ajaxLinks.on('click', ajaxContent);
+
+        var ajaxForms = $('.ajax-content form');
+        ajaxForms.off('submit', ajaxFiltration);
+        ajaxForms.on('submit', ajaxFiltration);
+    }).fail(function () {
+        pagination.unblock();
+        table.unblock();
+    });
+}
+
+function ajaxFiltration(event) {
+    event.preventDefault();
+    var contentElement = $(this).parents('.ajax-content');
+    var pagination = contentElement.find('.pagination');
+    var table = contentElement.find('.table');
+
+    var options = {message: null, baseZ: 10000, overlayCSS: {opacity: 0.2, cursor: 'progress'}};
+
+    pagination.block(options);
+    table.block(options);
+
+    var url = '/table/' + $(this).attr('action').split('/')[2] + '/1';
+
+    var sort = null;
+    var direction = null;
+    contentElement.find('.sortable').each(function () {
+        var link = $(this);
+        if (link.hasClass('asc') || link.hasClass('desc')) {
+            sort = link.data('field').toUpperCase();
+            direction = link.hasClass('asc') ? 'asc' : 'desc';
+            return false;
+        }
+    });
+
+    if (sort == null) {
+        sort = 'ID';
+    }
+    if (direction == null) {
+        direction = 'asc';
+    }
+    url += '/' + sort + '/' + direction;
+
+    var filterField = $(this).find('[name="filterField"]').val();
+    var filterValue = $(this).find('[name="filterValue"]').val();
+    if (filterField != '' && filterValue != '') {
+        url += '/' + filterField;
+        if (filterValue != '') {
+            url += '/' + filterValue;
+        }
+    }
+
+    $.ajax({
+        type: 'get',
+        url: url,
+        timeout: 10000
+    }).done(function (html) {
+        contentElement.replaceWith(html);
+
+        var ajaxLinks = $('.ajax-content a');
+        ajaxLinks.off('click', ajaxContent);
+        ajaxLinks.on('click', ajaxContent);
+
+        var ajaxForms = $('.ajax-content form');
+        ajaxForms.off('submit', ajaxFiltration);
+        ajaxForms.on('submit', ajaxFiltration);
     }).fail(function () {
         pagination.unblock();
         table.unblock();
@@ -49,3 +114,4 @@ function ajaxContent(event) {
 }
 
 $('.ajax-content a').on('click', ajaxContent);
+$('.ajax-content form').on('submit', ajaxFiltration);

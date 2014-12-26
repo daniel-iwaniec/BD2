@@ -1,5 +1,16 @@
 {% extends 'table-layout.html.twig' %}
 
+{% block tableFiltration %}
+    {{ knp_pagination_filter(pagination, {
+        'ID': 'id',
+        'MIESIAC_ID': 'miesiac_id',
+        'NUMER_MIESIAC': 'numer_miesiac',
+        'NUMER_TYDZIEN': 'numer_tydzien',
+        'NAZWA': 'nazwa',
+        'CZY_DZIEN_ROBOCZY': 'czy_dzien_roboczy'
+    }, {'button': 'Szukaj'}) }}
+{% endblock %}
+
 {% block tableHeader %}
     <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
     <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'miesiac_id', 'MIESIAC_ID') }}</abbr></th>

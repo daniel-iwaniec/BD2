@@ -24,6 +24,7 @@ pagination:
     results_per_page: 20
     templates:
         sortable: 'sortable.html.twig'
+        filtration: 'filtration.html.twig'
         pagination: 'pagination.html.twig'
 
 resources:

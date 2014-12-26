@@ -6,21 +6,28 @@
 
 <div class="row ajax-content">
     <div class="col-md-12">
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    {% block tableHeader %}{% endblock %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in data %}
+        {% block tableFiltration %}{% endblock %}
+        {% if data %}
+            <table class="table table-striped table-hover">
+                <thead>
                     <tr>
-                        {% block tableContent %}{% endblock %}
+                        {% block tableHeader %}{% endblock %}
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for item in data %}
+                        <tr>
+                            {% block tableContent %}{% endblock %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-        {{ knp_pagination_render(pagination) }}
+            {{ knp_pagination_render(pagination) }}
+        {% else %}
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> <strong>Brak wyników</strong> - zmień parametry wyszukiwania i spróbuj ponownie.
+            </div>
+        {% endif %}
     </div>
 </div>
