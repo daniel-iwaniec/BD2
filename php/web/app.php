@@ -13,15 +13,19 @@ use Qck\Silex\Provider\PaginationServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
 use BD2\ControllerInterface\ErrorControllerInterface;
 
-$root = __DIR__ . '/..';
+$test = true;
+if (!isset($root)) {
+    $test = false;
+    $root = __DIR__ . '/..';
+    require_once $root . '/vendor/autoload.php';
+}
 
-require_once $root . '/vendor/autoload.php';
 $app = new BD2Application();
 $app['root'] = $root;
 
-$app->register(new YamlConfigServiceProvider('../app/config/parameters.yml.dist'));
-$app->register(new YamlConfigServiceProvider('../app/config/config.yml'));
-$app->register(new YamlConfigServiceProvider('../app/config/routing.yml'));
+$app->register(new YamlConfigServiceProvider($root . '/app/config/parameters.yml.dist'));
+$app->register(new YamlConfigServiceProvider($root . '/app/config/config.yml'));
+$app->register(new YamlConfigServiceProvider($root . '/app/config/routing.yml'));
 
 $app->register(new ServiceControllerServiceProvider());
 $app->register(new UrlGeneratorServiceProvider());
@@ -116,4 +120,8 @@ $app->error(function () use ($app) {
     return $errorController->errorAction($app);
 });
 
-$app->run();
+if ($test) {
+    return $app;
+} else {
+    $app->run();
+}
