@@ -31,6 +31,7 @@ class PageTest extends WebTestCase
 
         $this->assertTrue($client->getResponse()->isOk());
         $this->assertCount(1, $crawler->filter('.jumbotron'));
+        $this->assertCount(1, $crawler->filter('.oracle-data-table'));
     }
 
     /**
@@ -55,6 +56,7 @@ class PageTest extends WebTestCase
 
         $this->assertTrue($client->getResponse()->isOk());
         $this->assertCount(1, $crawler->filter('.jumbotron'));
+        $this->assertCount(13, $crawler->filter('.oracle-data-table'));
     }
 
     /**
