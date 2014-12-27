@@ -12,11 +12,69 @@
         <p><a href="{{ url('authors') }}" class="btn btn-primary btn-lg" role="button" data-toggle="tooltip" data-placement="right" title="projektu BD2">Zobacz autorów &raquo;</a></p>
     </div>
 
-    <div class="page-header"><h1><sup><small><span class="label label-primary">zapytanie</span></small></sup> Zapytania wykorzystujące <code>ROLLUP</code></h1></div>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">group by</span></small></sup> Zapytania wykorzystujące <code>ROLLUP</code></h1></div>
     <h2><sup><small><span class="label label-info">rollup</span></small></sup> Przykład numer 1</h2>
     <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
     <div class="well">
         Opis tego zapytania.
     </div>
-    <div class="well">Lorem ipsum dolor sit amet.</div>
+    <h2><sup><small><span class="label label-info">rollup</span></small></sup> Przykład numer 2</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
+
+    <div class="page-header"><h1><sup><small><span class="label label-primary">group by</span></small></sup> Zapytania wykorzystujące <code>CUBE</code></h1></div>
+    <h2><sup><small><span class="label label-info">cube</span></small></sup> Przykład numer 1</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
+    <h2><sup><small><span class="label label-info">cube</span></small></sup> Przykład numer 2</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
+
+    <div class="page-header"><h1><sup><small><span class="label label-primary">group by</span></small></sup> Zapytania wykorzystujące <code>GROUPING SETS</code></h1></div>
+    <h2><sup><small><span class="label label-info">grouping sets</span></small></sup> Przykład numer 1</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
+    <h2><sup><small><span class="label label-info">grouping sets</span></small></sup> Przykład numer 2</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
+
+    <div class="page-header"><h1><sup><small><span class="label label-danger">over</span></small></sup> Zapytania wykorzystujące <code>PARTITION BY</code></h1></div>
+    <h2><sup><small><span class="label label-warning">partition by</span></small></sup> Przykład numer 1</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
+    <h2><sup><small><span class="label label-warning">partition by</span></small></sup> Przykład numer 2</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
+
+    <div class="page-header"><h1><sup><small><span class="label label-danger">over</span></small></sup> Zapytania wykorzystujące <code>PARTITION BY &hellip; ORDER BY</code></h1></div>
+    <h2><sup><small><span class="label label-warning">partition by &hellip; order by</span></small></sup> Przykład numer 1</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
+    <h2><sup><small><span class="label label-warning">partition by &hellip; order by</span></small></sup> Przykład numer 2</h2>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tego zapytania.
+    </div>
+
+    <div class="page-header"><h1><sup><small><span class="label label-danger">procedura</span></small></sup> Procedura imitująca <code>CUBE</code></h1></div>
+    <pre class="line-numbers"><code class="language-sql">SELECT * FROM sprzedaz;</code></pre>
+    <div class="well">
+        Opis tej procedury.
+    </div>
 {% endblock %}
