@@ -182,7 +182,31 @@ class PageController extends AbstractController
      */
     public function analysisAction()
     {
-        $view = $this->app->renderView('page/analysis.html.twig');
+        $rollup1 = $this->getFile('sql/rollup1.sql');
+        $rollup2 = $this->getFile('sql/rollup2.sql');
+        $cube1 = $this->getFile('sql/cube1.sql');
+        $cube2 = $this->getFile('sql/cube2.sql');
+        $groupingSets1 = $this->getFile('sql/grouping_sets1.sql');
+        $groupingSets2 = $this->getFile('sql/grouping_sets2.sql');
+        $partitionBy1 = $this->getFile('sql/partition_by1.sql');
+        $partitionBy2 = $this->getFile('sql/partition_by2.sql');
+        $partitionByOrderBy1 = $this->getFile('sql/partition_by_order_by1.sql');
+        $partitionByOrderBy2 = $this->getFile('sql/partition_by_order_by2.sql');
+        $procedureCubePolyfill = $this->getFile('sql/procedure_cube_polyfill.sql');
+
+        $view = $this->app->renderView('page/analysis.html.twig', [
+            'rollup1' => $rollup1,
+            'rollup2' => $rollup2,
+            'cube1' => $cube1,
+            'cube2' => $cube2,
+            'groupingSets1' => $groupingSets1,
+            'groupingSets2' => $groupingSets2,
+            'partitionBy1' => $partitionBy1,
+            'partitionBy2' => $partitionBy2,
+            'partitionByOrderBy1' => $partitionByOrderBy1,
+            'partitionByOrderBy2' => $partitionByOrderBy2,
+            'procedureCubePolyfill' => $procedureCubePolyfill
+        ]);
 
         return new Response($view);
     }
