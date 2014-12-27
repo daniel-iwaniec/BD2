@@ -69,4 +69,82 @@ class TableController extends AbstractController
 
         return new Response($view);
     }
+
+    /**
+     * Translated foreign keys.
+     * Basically takes ID from parent table and returns more descriptive value from referenced table.
+     * This action is supposed to work with AJAX only.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function translateForeignKeysAction(Request $request)
+    {
+        /** @var \Doctrine\DBAL\Connection $connection */
+        /** @var \Doctrine\DBAL\Driver\Statement $statement */
+
+        $connection = $this->app['db'];
+        $tables = $request->request->all();
+
+        $data = [];
+        foreach ($tables as $table => $id) {
+            $id = (int)$id;
+            $query = $connection->createQueryBuilder();
+
+            if ($table == 'klient') {
+                $query->select('NAZWA')
+                    ->from(strtoupper($table), 'table_alias')
+                    ->where("ID = {$connection->quote($id)}");
+
+                $statement = $connection->executeQuery($query->getSql());
+                $data['klient'] = $statement->fetchAll(\PDO::FETCH_COLUMN)[0];
+            }
+            if ($table == 'sprzedawca') {
+                $query->select('IMIE', 'NAZWISKO')
+                    ->from(strtoupper($table), 'table_alias')
+                    ->where("ID = {$connection->quote($id)}");
+
+                $statement = $connection->executeQuery($query->getSql());
+                $result = $statement->fetchAll(\PDO::FETCH_ASSOC)[0];
+                $data['sprzedawca'] = $result['IMIE'] . ' ' . $result['NAZWISKO'];
+            }
+            if ($table == 'data_sprzedazy') {
+                $query->select('r.NUMER AS rok', 'm.NUMER AS miesiac', 'table_alias.NUMER_MIESIAC AS dzien')
+                    ->from(strtoupper($table), 'table_alias')
+                    ->innerJoin('table_alias', 'MIESIAC', 'm', 'm.id = table_alias.miesiac_id')
+                    ->innerJoin('table_alias', 'ROK', 'r', 'r.id = m.rok_id')
+                    ->where("table_alias.ID = {$connection->quote($id)}");
+
+                $statement = $connection->executeQuery($query->getSql());
+                $result = $statement->fetchAll(\PDO::FETCH_ASSOC)[0];
+                if ($result['DZIEN'] < 10) {
+                    $result['DZIEN'] = '0' . $result['DZIEN'];
+                }
+                if ($result['MIESIAC'] < 10) {
+                    $result['MIESIAC'] = '0' . $result['MIESIAC'];
+                }
+                $data['data_sprzedazy'] = $result['DZIEN'] . '.' . $result['MIESIAC'] . '.' . $result['ROK'];
+            }
+            if ($table == 'produkt') {
+                $query->select('NAZWA')
+                    ->from(strtoupper($table), 'table_alias')
+                    ->where("ID = {$connection->quote($id)}");
+
+                $statement = $connection->executeQuery($query->getSql());
+                $data['produkt'] = $statement->fetchAll(\PDO::FETCH_COLUMN)[0];
+            }
+            if ($table == 'lokalizacja') {
+                $query->select('table_alias.ULICA', 'table_alias.KOD_POCZTOWY', 'm.NAZWA AS MIASTO_NAZWA')
+                    ->from(strtoupper($table), 'table_alias')
+                    ->innerJoin('table_alias', 'MIASTO', 'm', 'm.id = table_alias.miasto_id')
+                    ->where("table_alias.ID = {$connection->quote($id)}");
+
+                $statement = $connection->executeQuery($query->getSql());
+                $result = $statement->fetchAll(\PDO::FETCH_ASSOC)[0];
+                $data['lokalizacja'] = $result['MIASTO_NAZWA'] . ' ul. ' . $result['ULICA'] . ', ' . $result['KOD_POCZTOWY'];
+            }
+        }
+
+        return $this->app->json($data);
+    }
 }

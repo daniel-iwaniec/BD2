@@ -15,25 +15,25 @@
 {% endblock %}
 
 {% block tableHeader %}
-    <th><abbr title="Identyfikator rekordu">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
-    <th><abbr title="Wymiar - klient">{{ knp_pagination_sortable(pagination, 'klient_id', 'KLIENT_ID') }}</abbr></th>
-    <th><abbr title="Wymiar - sprzedawca">{{ knp_pagination_sortable(pagination, 'sprzedawca_id', 'SPRZEDAWCA_ID') }}</abbr></th>
-    <th><abbr title="Wymiar - data sprzedaży">{{ knp_pagination_sortable(pagination, 'data_sprzedazy_id', 'DATA_SPRZEDAZY_ID') }}</abbr></th>
-    <th><abbr title="Wymiar - produkt">{{ knp_pagination_sortable(pagination, 'produkt_id', 'PRODUKT_ID') }}</abbr></th>
-    <th><abbr title="Wymiar - lokalizacja">{{ knp_pagination_sortable(pagination, 'lokalizacja_id', 'LOKALIZACJA_ID') }}</abbr></th>
-    <th><abbr title="Miara - ilość">{{ knp_pagination_sortable(pagination, 'ilosc', 'ILOSC') }}</abbr></th>
-    <th><abbr title="Miara - wartość">{{ knp_pagination_sortable(pagination, 'wartosc', 'WARTOSC') }}</abbr></th>
-    <th><abbr title="Miara - rabat">{{ knp_pagination_sortable(pagination, 'rabat', 'RABAT') }}</abbr></th>
+    <th class="col-md-1"><abbr title="Identyfikator rekordu">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
+    <th class="col-md-2"><abbr title="Wymiar - klient">{{ knp_pagination_sortable(pagination, 'klient_id', 'KLIENT_ID') }}</abbr></th>
+    <th class="col-md-2"><abbr title="Wymiar - sprzedawca">{{ knp_pagination_sortable(pagination, 'sprzedawca_id', 'SPRZEDAWCA_ID') }}</abbr></th>
+    <th class="col-md-2"><abbr title="Wymiar - data sprzedaży">{{ knp_pagination_sortable(pagination, 'data_sprzedazy_id', 'DATA_SPRZEDAZY_ID') }}</abbr></th>
+    <th class="col-md-2"><abbr title="Wymiar - produkt">{{ knp_pagination_sortable(pagination, 'produkt_id', 'PRODUKT_ID') }}</abbr></th>
+    <th class="col-md-2"><abbr title="Wymiar - lokalizacja">{{ knp_pagination_sortable(pagination, 'lokalizacja_id', 'LOKALIZACJA_ID') }}</abbr></th>
+    <th class="col-md-1"><abbr title="Miara - ilość">{{ knp_pagination_sortable(pagination, 'ilosc', 'ILOSC') }}</abbr></th>
+    <th class="col-md-2"><abbr title="Miara - wartość">{{ knp_pagination_sortable(pagination, 'wartosc', 'WARTOSC') }}</abbr></th>
+    <th class="col-md-2"><abbr title="Miara - rabat">{{ knp_pagination_sortable(pagination, 'rabat', 'RABAT') }}</abbr></th>
 {% endblock %}
 
 {% block tableContent %}
-    <td><b>{{ item.ID }}</b></td>
-    <td>{{ item.KLIENT_ID }}</td>
-    <td>{{ item.SPRZEDAWCA_ID }}</td>
-    <td>{{ item.DATA_SPRZEDAZY_ID }}</td>
-    <td>{{ item.PRODUKT_ID }}</td>
-    <td>{{ item.LOKALIZACJA_ID }}</td>
+    <td><span class="glyphicon glyphicon-eye-open translate-fk-ico" aria-hidden="true" title="pokaż/ukryj klucze obce"></span> <b>{{ item.ID }}</b></td>
+    <td class="foreign-key" data-foreign-key-table="klient" data-foreign-key-value="{{ item.KLIENT_ID }}">{{ item.KLIENT_ID }}</td>
+    <td class="foreign-key" data-foreign-key-table="sprzedawca" data-foreign-key-value="{{ item.SPRZEDAWCA_ID }}">{{ item.SPRZEDAWCA_ID }}</td>
+    <td class="foreign-key" data-foreign-key-table="data_sprzedazy" data-foreign-key-value="{{ item.DATA_SPRZEDAZY_ID }}">{{ item.DATA_SPRZEDAZY_ID }}</td>
+    <td class="foreign-key" data-foreign-key-table="produkt" data-foreign-key-value="{{ item.PRODUKT_ID }}">{{ item.PRODUKT_ID }}</td>
+    <td class="foreign-key" data-foreign-key-table="lokalizacja" data-foreign-key-value="{{ item.LOKALIZACJA_ID }}">{{ item.LOKALIZACJA_ID }}</td>
     <td>{{ item.ILOSC }}</td>
-    <td>{{ item.WARTOSC }}</td>
-    <td>{{ item.RABAT }}</td>
+    <td>{{ item.WARTOSC }},00</td>
+    <td>{{ item.RABAT }}%</td>
 {% endblock %}

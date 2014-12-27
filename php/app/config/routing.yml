@@ -13,6 +13,10 @@ routes:
             assert:
                 - {page: '\d+'}
                 - {direction: 'asc|desc'}
+    translatefk:
+        type: 'post'
+        route: '/translatefk'
+        action: 'bd2.controller.table:translateForeignKeysAction'
     rawfile:
         type: 'get'
         route: '/plik/{file}'
