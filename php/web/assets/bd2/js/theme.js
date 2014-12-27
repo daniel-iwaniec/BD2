@@ -22,12 +22,6 @@ $('.disposable-alert .close').on('click', function (event) {
     $.cookie('disposableAlert' + alertId, 'closed', {path: '/'});
 });
 
-$('.panel-csv').each(function () {
-    var row = $(this).parents('.row');
-    var well = row.find('.well');
-    $(this).height(well.outerHeight() - 2);
-});
-
 function ajaxContent(event) {
     event.preventDefault();
     var contentElement = $(this).parents('.ajax-content');

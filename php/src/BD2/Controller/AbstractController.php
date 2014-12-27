@@ -27,9 +27,10 @@ abstract class AbstractController
      *
      * @param string $file
      * @param integer|null $linesAmount
+     * @param integer $offset
      * @return string
      */
-    public function getFile($file, $linesAmount = null)
+    public function getFile($file, $linesAmount = null, $offset = 0)
     {
         $path = [$this->app['root'], $this->app['config']['resources']['root'], $this->app['config']['resources']['files']];
         $path = implode(DIRECTORY_SEPARATOR, $path);
@@ -39,14 +40,15 @@ abstract class AbstractController
             $output = file($path . DIRECTORY_SEPARATOR . $file);
             $output = str_getcsv(implode('', $output), "\n");
             if ($linesAmount) {
-                array_splice($output, $linesAmount);
+                $output = array_slice($output, $offset, $linesAmount);
             }
+            $output = implode("\n", $output);
         } else {
             $output = file($path . DIRECTORY_SEPARATOR . $file);
             if ($linesAmount) {
-                array_splice($output, $linesAmount);
+                $output = array_slice($output, $offset, $linesAmount);
             }
-            $output = implode('', $output);
+            $output = trim(implode('', $output), "\n\r");
         }
 
         return $output;

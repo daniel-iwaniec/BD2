@@ -7,6 +7,10 @@ services:
             class: '\BD2\Controller\TableController'
             tags:
                 - 'bd2.controller'
+    bd2.controller.raw_file:
+            class: '\BD2\Controller\RawFileController'
+            tags:
+                - 'bd2.controller'
     bd2.controller.error:
         class: '\BD2\Controller\ErrorController'
         tags:

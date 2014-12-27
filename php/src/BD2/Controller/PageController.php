@@ -112,7 +112,65 @@ class PageController extends AbstractController
      */
     public function importAction()
     {
-        $view = $this->app->renderView('page/import.html.twig');
+        $tableBranzaCTL = $this->getFile('ctl/branza.ctl');
+        $tableKlientCTL = $this->getFile('ctl/klient.ctl');
+        $tableStanowiskoCTL = $this->getFile('ctl/stanowisko.ctl');
+        $tableSprzedawcaCTL = $this->getFile('ctl/sprzedawca.ctl');
+        $tableRokCTL = $this->getFile('ctl/rok.ctl');
+        $tableMiesiacCTL = $this->getFile('ctl/miesiac.ctl');
+        $tableDataSprzedazyCTL = $this->getFile('ctl/data_sprzedazy.ctl');
+        $tableProduktTypCTL = $this->getFile('ctl/produkt_typ.ctl');
+        $tableProduktCTL = $this->getFile('ctl/produkt.ctl');
+        $tableWojewodztwoCTL = $this->getFile('ctl/wojewodztwo.ctl');
+        $tableMiastoCTL = $this->getFile('ctl/miasto.ctl');
+        $tableLokalizacjaCTL = $this->getFile('ctl/lokalizacja.ctl');
+        $tableSprzedazCTL = $this->getFile('ctl/sprzedaz.ctl');
+
+        $tableBranzaLOG = $this->getFile('log/branza.log', 15, 20);
+        $tableKlientLOG = $this->getFile('log/klient.log', 16, 20);
+        $tableStanowiskoLOG = $this->getFile('log/stanowisko.log', 16, 20);
+        $tableSprzedawcaLOG = $this->getFile('log/sprzedawca.log', 17, 20);
+        $tableRokLOG = $this->getFile('log/rok.log', 16, 20);
+        $tableMiesiacLOG = $this->getFile('log/miesiac.log', 17, 20);
+        $tableDataSprzedazyLOG = $this->getFile('log/data_sprzedazy.log', 19, 20);
+        $tableProduktTypLOG = $this->getFile('log/produkt_typ.log', 15, 20);
+        $tableProduktLOG = $this->getFile('log/produkt.log', 16, 20);
+        $tableWojewodztwoLOG = $this->getFile('log/wojewodztwo.log', 16, 20);
+        $tableMiastoLOG = $this->getFile('log/miasto.log', 16, 20);
+        $tableLokalizacjaLOG = $this->getFile('log/lokalizacja.log', 17, 20);
+        $tableSprzedazLOG = $this->getFile('log/sprzedaz.log', 23, 20);
+
+        $importBAT = $this->getFile('bat/import.bat');
+
+        $view = $this->app->renderView('page/import.html.twig', [
+            'tableBranzaCTL' => $tableBranzaCTL,
+            'tableKlientCTL' => $tableKlientCTL,
+            'tableStanowiskoCTL' => $tableStanowiskoCTL,
+            'tableSprzedawcaCTL' => $tableSprzedawcaCTL,
+            'tableRokCTL' => $tableRokCTL,
+            'tableMiesiacCTL' => $tableMiesiacCTL,
+            'tableDataSprzedazyCTL' => $tableDataSprzedazyCTL,
+            'tableProduktTypCTL' => $tableProduktTypCTL,
+            'tableProduktCTL' => $tableProduktCTL,
+            'tableWojewodztwoCTL' => $tableWojewodztwoCTL,
+            'tableMiastoCTL' => $tableMiastoCTL,
+            'tableLokalizacjaCTL' => $tableLokalizacjaCTL,
+            'tableSprzedazCTL' => $tableSprzedazCTL,
+            'tableBranzaLOG' => $tableBranzaLOG,
+            'tableKlientLOG' => $tableKlientLOG,
+            'tableStanowiskoLOG' => $tableStanowiskoLOG,
+            'tableSprzedawcaLOG' => $tableSprzedawcaLOG,
+            'tableRokLOG' => $tableRokLOG,
+            'tableMiesiacLOG' => $tableMiesiacLOG,
+            'tableDataSprzedazyLOG' => $tableDataSprzedazyLOG,
+            'tableProduktTypLOG' => $tableProduktTypLOG,
+            'tableProduktLOG' => $tableProduktLOG,
+            'tableWojewodztwoLOG' => $tableWojewodztwoLOG,
+            'tableMiastoLOG' => $tableMiastoLOG,
+            'tableLokalizacjaLOG' => $tableLokalizacjaLOG,
+            'tableSprzedazLOG' => $tableSprzedazLOG,
+            'importBAT' => $importBAT
+        ]);
 
         return new Response($view);
     }

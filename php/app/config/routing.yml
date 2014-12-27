@@ -13,6 +13,10 @@ routes:
             assert:
                 - {page: '\d+'}
                 - {direction: 'asc|desc'}
+    rawfile:
+        type: 'get'
+        route: '/plik/{file}'
+        action: 'bd2.controller.raw_file:readAction'
     introduction:
         type: 'match'
         route: '/'
