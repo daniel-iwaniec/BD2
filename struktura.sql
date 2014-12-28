@@ -83,43 +83,17 @@ CREATE TABLE produkt (
   CONSTRAINT produkt_produkt_typ_fk FOREIGN KEY (produkt_typ_id) REFERENCES produkt_typ (id)
 );
 
-CREATE TABLE wojewodztwo (
-  id    INTEGER       NOT NULL,
-  nazwa VARCHAR2(200) NOT NULL,
-  CONSTRAINT wojewodztwo_pk PRIMARY KEY (id)
-);
-
-CREATE TABLE miasto (
-  id             INTEGER       NOT NULL,
-  wojewodztwo_id INTEGER       NOT NULL,
-  nazwa          VARCHAR2(200) NOT NULL,
-  CONSTRAINT miasto_pk             PRIMARY KEY (id),
-  CONSTRAINT miasto_wojewodztwo_fk FOREIGN KEY (wojewodztwo_id) REFERENCES wojewodztwo (id)
-);
-
-CREATE TABLE lokalizacja (
-  id           INTEGER       NOT NULL,
-  miasto_id    INTEGER       NOT NULL,
-  ulica        VARCHAR2(200) NOT NULL,
-  kod_pocztowy VARCHAR2(200) NOT NULL,
-  CONSTRAINT lokalizacja_pk        PRIMARY KEY (id),
-  CONSTRAINT lokalizacja_miasto_fk FOREIGN KEY (miasto_id) REFERENCES miasto (id)
-);
-
 CREATE TABLE sprzedaz (
   id                INTEGER           NOT NULL,
   klient_id         INTEGER           NOT NULL,
   sprzedawca_id     INTEGER           NOT NULL,
   data_sprzedazy_id INTEGER           NOT NULL,
   produkt_id        INTEGER           NOT NULL,
-  lokalizacja_id    INTEGER           NOT NULL,
   ilosc             INTEGER           NOT NULL,
   wartosc           INTEGER           NOT NULL,
-  rabat             INTEGER DEFAULT 0 NOT NULL,
   CONSTRAINT sprzedaz_pk                PRIMARY KEY (id),
   CONSTRAINT sprzedaz_klient_fk         FOREIGN KEY (klient_id)         REFERENCES klient (id),
   CONSTRAINT sprzedaz_sprzedawca_fk     FOREIGN KEY (sprzedawca_id)     REFERENCES sprzedawca (id),
   CONSTRAINT sprzedaz_data_sprzedazy_fk FOREIGN KEY (data_sprzedazy_id) REFERENCES data_sprzedazy (id),
-  CONSTRAINT sprzedaz_produkt_fk        FOREIGN KEY (produkt_id)        REFERENCES produkt (id),
-  CONSTRAINT sprzedaz_lokalizacja_fk    FOREIGN KEY (lokalizacja_id)    REFERENCES lokalizacja (id)
+  CONSTRAINT sprzedaz_produkt_fk        FOREIGN KEY (produkt_id)        REFERENCES produkt (id)
 );
