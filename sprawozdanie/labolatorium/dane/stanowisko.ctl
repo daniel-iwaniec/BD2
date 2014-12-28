@@ -1,0 +1,6 @@
+LOAD DATA
+CHARACTERSET UTF8
+INFILE 'stanowisko.csv'
+INSERT INTO TABLE stanowisko
+FIELDS TERMINATED BY ","
+(id,nazwa) 
