@@ -1,7 +1,7 @@
 # Bazy Danych 2 - Projekt
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Ghutix/BD2/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Ghutix/BD2/?branch=master)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Ghutix/BD2/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Ghutix/BD2/?branch=master)
 
 Tematem projektu jest **hurtownia danych** dla składu materiałów budowlanych.
 
