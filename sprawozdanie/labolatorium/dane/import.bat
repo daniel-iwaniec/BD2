@@ -12,9 +12,6 @@ sqlldr userid=%login%/%password% control=miesiac.ctl log=miesiac.log
 sqlldr userid=%login%/%password% control=data_sprzedazy.ctl log=data_sprzedazy.log
 sqlldr userid=%login%/%password% control=branza.ctl log=branza.log
 sqlldr userid=%login%/%password% control=klient.ctl log=klient.log
-sqlldr userid=%login%/%password% control=wojewodztwo.ctl log=wojewodztwo.log
-sqlldr userid=%login%/%password% control=miasto.ctl log=miasto.log
-sqlldr userid=%login%/%password% control=lokalizacja.ctl log=lokalizacja.log
 sqlldr userid=%login%/%password% control=stanowisko.ctl log=stanowisko.log
 sqlldr userid=%login%/%password% control=sprzedawca.ctl log=sprzedawca.log
 sqlldr userid=%login%/%password% control=produkt_typ.ctl log=produkt_typ.log
