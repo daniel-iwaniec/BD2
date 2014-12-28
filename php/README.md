@@ -19,7 +19,7 @@ Wymanagania:
 
 - Instalacja vendorów za pomocą `composer install`,
 - Instalacja assetów  za pomocą `bower install`,
-- Wygenerowanie assetów za pomoca `grunt`,
+- Wygenerowanie assetów za pomocą `grunt`,
 - Stworzenie własnego pliku **parameters.yml.dist** na podstawie parameters.yml.
 
 ## Opis
