@@ -13,7 +13,7 @@ Wymanagania:
 
 - Apache 2.2
 - Oracle XE
-- PHP 5.6.4 (z włączonym rozszerzeniem **pdo_ci**)
+- PHP 5.6.4 (z włączonym rozszerzeniem **pdo_oci**)
 
 ## Instalacja
 
