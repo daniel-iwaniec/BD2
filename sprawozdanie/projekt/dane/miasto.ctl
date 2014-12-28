@@ -1,0 +1,6 @@
+LOAD DATA
+CHARACTERSET UTF8
+INFILE 'miasto.csv'
+INSERT INTO TABLE miasto
+FIELDS TERMINATED BY ","
+(id,wojewodztwo_id,nazwa)

@@ -15,7 +15,12 @@
     <div class="page-header"><h1><sup><small><span class="label label-default">oracle sql data modeler</span></small></sup> Diagram w notacji <strong>kruczej stopki</strong> (ang. <em>crow&#39;s foot</em>)</h1></div>
     <img src="{{ asset('img/schema.png', 'bd2') }}" class="img-responsive center-block img-diagram" alt="Diagram bazy danych">
     <div class="well">
-        Opis tego diagramu.
+        Diagram został wygenerowany w notacji bazującej na notacji <b>kruczej stopki</b> (ang. <i>crow's foot</i>)
+        za pomocą programu Oracle SQL Data Modeler.<br><br>
+        Struktura została stworzona zgodnie z konwencją <b>schematu płatka śniegu</b> (ang. <i>snowflake schema</i>). Składa się z <b>tabeli faktów</b> (sprzedaz) oraz 5 znormalizowanych <b>wymiarów</b> (produkt, sprzedawca, klient, data_sprzedazy, lokalizacja).<br><br>
+        Wszystkie tabele (<i>encje</i>) spełniają wymogi pierwszej postaci normalnej (<b>1NF</b>), ponieważ każdy wiersz posiada klucz klucz główny (ang. <i>primary key</i> lub <i>PK</i>) identyfikujący jendoznacznie dane, które są atomowe i nie powielają się.<br><br>
+        Wszystkie tabele spełniają również wymogi drugiej postaci normalnej (<b>2NF</b>), ponieważ dane nie zależące funkcyjnie od klucza głównego zostały przeniesione do osobnych encji i powiązane za pomocą kluczy obcych (ang. <i>foregin key</i> lub <i>FK</i>).<br><br>
+        Wszystkie tabele spełniają również wymogi trzeciej postaci normalnej (<b>3NF</b>), ponieważ nie istnieją atrybuty wtórne nie zależące od klucza głównego (np. brak kolumny z wartością sprzedaży bez odliczonego rabatu).
     </div>
 
     <div class="page-header"><h1><sup><small><span class="label label-default">oracle sql developer</span></small></sup> SQL DDL struktury hurtowni</h1></div>
