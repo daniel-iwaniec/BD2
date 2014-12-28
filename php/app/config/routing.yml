@@ -1,0 +1,47 @@
+routes:
+    table:
+        type: 'get'
+        route: '/table/{table}/{page}/{sort}/{direction}/{filterField}/{filterValue}'
+        action: 'bd2.controller.table:readAction'
+        parameters:
+            default:
+                - {page: 1}
+                - {sort: 'ID'}
+                - {direction: 'asc'}
+                - {filterField: null}
+                - {filterValue: null}
+            assert:
+                - {page: '\d+'}
+                - {direction: 'asc|desc'}
+    translatefk:
+        type: 'post'
+        route: '/translatefk'
+        action: 'bd2.controller.table:translateForeignKeysAction'
+    rawfile:
+        type: 'get'
+        route: '/plik/{file}'
+        action: 'bd2.controller.raw_file:readAction'
+    introduction:
+        type: 'match'
+        route: '/'
+        action: 'bd2.controller.page:introductionAction'
+    structure:
+        type: 'match'
+        route: '/struktura'
+        action: 'bd2.controller.page:structureAction'
+    data:
+        type: 'match'
+        route: '/dane'
+        action: 'bd2.controller.page:dataAction'
+    import:
+        type: 'match'
+        route: '/import'
+        action: 'bd2.controller.page:importAction'
+    analysis:
+        type: 'match'
+        route: '/analiza'
+        action: 'bd2.controller.page:analysisAction'
+    authors:
+        type: 'match'
+        route: '/autorzy'
+        action: 'bd2.controller.page:authorsAction'

@@ -1,0 +1,111 @@
+@top-menu-offset: 70;
+@body-bottom-offset: 30;
+@table-border: 1px solid #ddd;
+
+@prism-blue: #337ab7;
+@prism-green: #5cb85c;
+@prism-red: #d9534f;
+@prism-orange: #f0ad4e;
+@prism-highlight: rgba(51, 122, 183, 0.1);
+
+body {
+  padding-top: unit(@top-menu-offset, px);
+  padding-bottom: unit(@body-bottom-offset, px);
+}
+
+.glyphicon {
+  &.glyphicon-chevron-down, &.glyphicon-chevron-up {
+    display: inline;
+  }
+}
+
+.translate-fk-ico:hover {
+  cursor: pointer;
+}
+
+.line-numbers-rows > span {
+  position: relative;
+  top: -1px;
+}
+
+.img-diagram {
+  margin-bottom: 15px;
+}
+
+form.pagination {
+  width: 100%;
+  margin: 0 0 10px 0;
+  .form-control {
+    width: 100%;
+  }
+  .input-group .input-group-btn {
+    width: 1%;
+  }
+}
+
+pre.language-sql {
+  .token {
+    &.atrule, &.attr-value, &.keyword {
+      color: @prism-blue;
+    }
+    &.selector, &.attr-name, &.string {
+      color: @prism-green;
+    }
+    &.property, &.tag, &.boolean, &.number {
+      color: @prism-red;
+    }
+    &.operator, &.entity, &.url {
+      color: @prism-orange;
+    }
+  }
+}
+
+.table {
+  border: @table-border;
+  & > tbody > tr {
+    td {
+      border-right: @table-border;
+    }
+    td:last-child {
+      border-right: none;
+    }
+  }
+  & > thead > tr {
+    th {
+      border-right: @table-border;
+    }
+    th:last-child {
+      border-right: none;
+    }
+  }
+}
+
+.disposable-alert {
+  display: none;
+  visibility: hidden;
+}
+
+.theme-showcase {
+  .navbar .container {
+    width: auto;
+  }
+
+  & > p > .btn {
+    margin: 5px 0;
+  }
+}
+
+.header-template() {
+  .badge {
+    vertical-align: middle;
+  }
+}
+
+.generate-header-template(@n, @i: 1) when (@i =< @n) {
+  h@{i} {
+    .header-template();
+  }
+  .generate-header-template(@n, (@i + 1));
+}
+
+.generate-header-template(6);

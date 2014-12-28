@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+{% set title = 'Błąd' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>Bazy Danych&nbsp;2 <sup><small><span class="label label-success">Projekt</span></small></sup></h1>
+
+        <div role="alert" class="alert alert-danger">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <strong>Wystąpił błąd!</strong> Spróbuj wrócić na poprzednią stronę lub do wprowadzenia.
+        </div>
+        <p><a href="{{ url('introduction') }}" class="btn btn-primary btn-lg" role="button" data-toggle="tooltip" data-placement="right" title="zacznij od początku">Wróć do wprowadzenia &raquo;</a></p>
+    </div>
+{% endblock %}
