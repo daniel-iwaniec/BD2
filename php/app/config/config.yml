@@ -1,0 +1,54 @@
+services:
+    bd2.controller.page:
+        class: '\BD2\Controller\PageController'
+        tags:
+            - 'bd2.controller'
+    bd2.controller.table:
+            class: '\BD2\Controller\TableController'
+            tags:
+                - 'bd2.controller'
+    bd2.controller.raw_file:
+            class: '\BD2\Controller\RawFileController'
+            tags:
+                - 'bd2.controller'
+    bd2.controller.error:
+        class: '\BD2\Controller\ErrorController'
+        tags:
+            - 'bd2.controller'
+
+twig:
+    paths:
+        - 'src/BD2/Resources/views'
+        - 'app/Resources/views'
+    assets:
+        bd2: 'assets/bd2'
+        bootstrap: 'assets/bootstrap/dist'
+
+pagination:
+    results_per_page: 10
+    templates:
+        sortable: 'sortable.html.twig'
+        filtration: 'filtration.html.twig'
+        pagination: 'pagination.html.twig'
+
+resources:
+    root: 'src/BD2/Resources'
+    files: 'files'
+
+tables:
+    - 'branza'
+    - 'klient'
+    - 'stanowisko'
+    - 'sprzedawca'
+    - 'rok'
+    - 'miesiac'
+    - 'data_sprzedazy'
+    - 'produkt_typ'
+    - 'produkt'
+    - 'wojewodztwo'
+    - 'miasto'
+    - 'lokalizacja'
+    - 'sprzedaz'
+
+error:
+    service: 'bd2.controller.error'

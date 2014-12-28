@@ -1,0 +1,30 @@
+{% extends 'table-layout.html.twig' %}
+
+{% block tableFiltration %}
+    {{ knp_pagination_filter(pagination, {
+        'ID': 'id',
+        'MIESIAC_ID': 'miesiac_id',
+        'NUMER_MIESIAC': 'numer_miesiac',
+        'NUMER_TYDZIEN': 'numer_tydzien',
+        'NAZWA': 'nazwa',
+        'CZY_DZIEN_ROBOCZY': 'czy_dzien_roboczy'
+    }, {'button': 'Szukaj'}) }}
+{% endblock %}
+
+{% block tableHeader %}
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'id', 'ID', [], direction) }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'miesiac_id', 'MIESIAC_ID') }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'numer_miesiac', 'NUMER_MIESIAC') }}</abbr></th>
+    <th><abbr title="INTEGER">{{ knp_pagination_sortable(pagination, 'numer_tydzien', 'NUMER_TYDZIEN') }}</abbr></th>
+    <th><abbr title="VARCHAR2(50)">{{ knp_pagination_sortable(pagination, 'nazwa', 'NAZWA') }}</abbr></th>
+    <th><abbr title="NUMBER(1)">{{ knp_pagination_sortable(pagination, 'czy_dzien_roboczy', 'CZY_DZIEN_ROBOCZY') }}</abbr></th>
+{% endblock %}
+
+{% block tableContent %}
+    <td><b>{{ item.ID }}</b></td>
+    <td>{{ item.MIESIAC_ID }}</td>
+    <td>{{ item.NUMER_MIESIAC }}</td>
+    <td>{{ item.NUMER_TYDZIEN }}</td>
+    <td>{{ item.NAZWA }}</td>
+    <td>{{ item.CZY_DZIEN_ROBOCZY }}</td>
+{% endblock %}

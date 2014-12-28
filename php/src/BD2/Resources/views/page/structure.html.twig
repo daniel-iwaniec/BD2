@@ -1,0 +1,105 @@
+{% extends 'layout.html.twig' %}
+{% set title = 'Struktura' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>Struktura hurtowni <sup><small><span class="label label-default">Projekt</span></small></sup></h1>
+
+        <p>
+            Struktura została stworzona zgodnie z konwencją <strong>schematu płatka śniegu</strong> (ang. <em>snowflake schema</em>).<br>
+            Składa się z <strong>tabeli faktów</strong> oraz 5 znormalizowanych <strong>tabel wymiarów</strong>.
+        </p>
+        <p><a href="{{ url('data') }}" class="btn btn-primary btn-lg" role="button" data-toggle="tooltip" data-placement="right" title="w formacie csv">Zobacz dane &raquo;</a></p>
+    </div>
+
+    <div class="page-header"><h1><sup><small><span class="label label-default">oracle sql data modeler</span></small></sup> Diagram w notacji <strong>kruczej stopki</strong> (ang. <em>crow&#39;s foot</em>)</h1></div>
+    <img src="{{ asset('img/schema.png', 'bd2') }}" class="img-responsive center-block img-diagram" alt="Diagram bazy danych">
+    <div class="well">
+        Opis tego diagramu.
+    </div>
+
+    <div class="page-header"><h1><sup><small><span class="label label-default">oracle sql developer</span></small></sup> SQL DDL struktury hurtowni</h1></div>
+    <h2><sup><small><span class="label label-danger">procedura</span></small></sup> Przygotowanie hurtowni za pomocą procedury <strong>DROP_ALL</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ procedureDropAllSQL }}</code></pre>
+    <div class="well">
+        Opis tej procedury.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar klient</span></small></sup> Struktura tabeli <strong>branza</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableBranzaSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar klient</span></small></sup> Struktura tabeli <strong>klient</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableKlientSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar sprzedawca</span></small></sup> Struktura tabeli <strong>stanowisko</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableStanowiskoSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar sprzedawca</span></small></sup> Struktura tabeli <strong>sprzedawca</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableSprzedawcaSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Struktura tabeli <strong>rok</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableRokSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Struktura tabeli <strong>miesiac</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableMiesiacSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Struktura tabeli <strong>data_sprzedazy</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableDataSprzedazySQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar produkt</span></small></sup> Struktura tabeli <strong>produkt_typ</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableProduktTypSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar produkt</span></small></sup> Struktura tabeli <strong>produkt</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableProduktSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Struktura tabeli <strong>wojewodztwo</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableWojewodztwoSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Struktura tabeli <strong>miasto</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableMiastoSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Struktura tabeli <strong>lokalizacja</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableLokalizacjaSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+
+    <h2><sup><small><span class="label label-success">tabela faktów</span></small></sup> Struktura tabeli <strong>sprzedaz</strong></h2>
+    <pre class="line-numbers"><code class="language-sql">{{ tableSprzedazSQL }}</code></pre>
+    <div class="well">
+        Opis tej tabeli.
+    </div>
+{% endblock %}

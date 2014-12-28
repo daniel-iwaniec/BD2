@@ -1,0 +1,6 @@
+LOAD DATA
+CHARACTERSET UTF8
+INFILE 'rok.csv'
+INSERT INTO TABLE rok
+FIELDS TERMINATED BY ","
+(id,numer,czy_przestepny)

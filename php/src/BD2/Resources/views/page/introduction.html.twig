@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+{% set title = 'Wprowadzenie' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h1>Bazy danych&nbsp;2 <sup><small><span class="label label-default">Projekt</span></small></sup></h1>
+
+        <p>
+            Tematem projektu jest <strong>hurtownia danych</strong> dla składu materiałów budowlanych.<br>
+            Zakres projektu obejmuje stworzenie struktury hurtowni, przygotowanie danych oraz ich import i analizę.<br>
+        </p>
+        <p><a href="{{ url('structure') }}" class="btn btn-primary btn-lg" role="button" data-toggle="tooltip" data-placement="right" title="w schemacie płatka śniegu">Zobacz strukturę &raquo;</a></p>
+    </div>
+
+    <div class="page-header"><h1><sup><small><span class="label label-success">tabela faktów</span></small></sup> Dane tabeli <strong>sprzedaz</strong> <span class="badge">5000 rekordów</span></h1></div>
+    <div role="alert" class="alert alert-info disposable-alert alert-dismissible fade in" data-disposable-alert-id="1">
+        <button data-dismiss="alert" class="close" type="button">
+            <span aria-hidden="true">×</span><span class="sr-only">Zamknij</span>
+        </button>
+        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        <strong>Czytelność danych</strong> - aby lepiej zrozumieć przedstawione dane kliknij na ikonkę <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></em>.
+    </div>
+
+    {{ render(url('table', {'table': 'sprzedaz'})) }}
+{% endblock %}
