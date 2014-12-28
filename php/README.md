@@ -1,38 +1,36 @@
 # Bazy Danych 2 - Projekt
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Ghutix/BD2/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Ghutix/BD2/?branch=master)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
+
 Tematem projektu jest **hurtownia danych** dla składu materiałów budowlanych.
+
 Zakres projektu obejmuje stworzenie struktury hurtowni, przygotowanie danych oraz ich import i analizę.
 
 ## Wymagania
 
 Wymanagania:
-- PHP 5.6.4
+
 - Apache 2.2
-- php_pdo_ci
-- oracle XE
-- inne?
-- testowane pod firefoxem
+- Oracle XE
+- PHP 5.6.4 (z włączonym rozszerzeniem **pdo_ci**)
 
 ## Instalacja
 
-**TODO**
-- Composer
-- Bower
-- parameter.yml.dist
-- Grunt?
-- Serwer?
+- Instalacja vendorów za pomocą `composer install`,
+- Instalacja assetów  za pomocą `bower install`,
+- Wygenerowanie assetów za pomoca `grunt`,
+- Stworzenie własnego pliku **parameters.yml.dist** na podstawie parameters.yml.
 
 ## Opis
 
-**TODO**
-
-Opis tego co jest zawarte w projekcie.
+Projekt GUI napisany w **PHP** dla hurtowni danych stworzonej w bazie danych **Oracle XE**.
 
 ## Autorzy
 
 - [Daniel Iwaniec](https://github.com/ghutix)
 - [Artur Kałuża](https://github.com/arturro2828)
 
-## License
+## Licencja
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+Projekt na licencji MIT. [Zobacz pełen plik licencji](LICENSE.md).
