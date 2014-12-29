@@ -27,84 +27,51 @@
     <h2><sup><small><span class="label label-danger">procedura</span></small></sup> Przygotowanie hurtowni za pomocą procedury <strong>DROP_ALL</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ procedureDropAllSQL }}</code></pre>
     <div class="well">
-        Opis tej procedury.
+        Procedura <b>DROP_ALL</b> pobiera z predefiniowanej tabeli <b>user_object</b> wszystkie utworzone tabele do kursora, które następnie za pomocą pętli są kolejno usuwane. Wykonywanie <b>DDL</b> wewnątrz procedury wymaga użycia <b>EXECUTE IMMEDIATE</b>. Na końcu procedura jest usuwana. Powodem użycia tej procedury jest możliwość jej poprawnego wykonania w przypadku gdy tabele nie istnieją.
     </div>
 
     <h2><sup><small><span class="label label-primary">wymiar klient</span></small></sup> Struktura tabeli <strong>branza</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableBranzaSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar klient</span></small></sup> Struktura tabeli <strong>klient</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableKlientSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar sprzedawca</span></small></sup> Struktura tabeli <strong>stanowisko</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableStanowiskoSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar sprzedawca</span></small></sup> Struktura tabeli <strong>sprzedawca</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableSprzedawcaSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Struktura tabeli <strong>rok</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableRokSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Struktura tabeli <strong>miesiac</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableMiesiacSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar data_sprzedazy</span></small></sup> Struktura tabeli <strong>data_sprzedazy</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableDataSprzedazySQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar produkt</span></small></sup> Struktura tabeli <strong>produkt_typ</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableProduktTypSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar produkt</span></small></sup> Struktura tabeli <strong>produkt</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableProduktSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Struktura tabeli <strong>wojewodztwo</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableWojewodztwoSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Struktura tabeli <strong>miasto</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableMiastoSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-primary">wymiar lokalizacja</span></small></sup> Struktura tabeli <strong>lokalizacja</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableLokalizacjaSQL }}</code></pre>
-    <div class="well">
-        Opis tej tabeli.
-    </div>
 
     <h2><sup><small><span class="label label-success">tabela faktów</span></small></sup> Struktura tabeli <strong>sprzedaz</strong></h2>
     <pre class="line-numbers"><code class="language-sql">{{ tableSprzedazSQL }}</code></pre>
+
+    <h2>Krótki opis struktury tabel</h2>
     <div class="well">
-        Opis tej tabeli.
+        Wszystkie zdefiniowane tabele posiadają jawnie zdefiniowane <i>klucze główne</i> oraz <i>klucze obce</i> (jeżeli te są potrzebne). Wszystkie zdefiniowane kolumny nie mogą być puste (<b>NOT NULL</b>).
+        Wartości liczbowe są zdefiniowane jako <b>INTEGER</b>, tekstowe jako <b>VARCHAR2</b>, a logiczne jako <b>NUMER(1)</b> (gdzie 0 oznacza fałsz, a 1 prawdę).
     </div>
 {% endblock %}
