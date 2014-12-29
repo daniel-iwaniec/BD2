@@ -30,16 +30,18 @@ order by sprzedawca_id, produkt_id;
 
 SELECT r.numer AS rok,m.nazwa AS miesiac, wartosc_all FROM
 (
-SELECT data_sprzedazy_id,sum(wartosc) over (partition by r.numer order by m.nazwa range between unbounded preceding and current row)
+SELECT data_sprzedazy_id,sum(wartosc) over (partition by r.numer order by d.id range between unbounded preceding and current row)
 AS wartosc_all
 from sprzedaz s
 JOIN data_sprzedazy d ON s.data_sprzedazy_id = d.id
 JOIN miesiac m ON d.miesiac_id = m.id
 JOIN rok r ON m.rok_id = r.id
+
 )query2
 left JOIN data_sprzedazy d ON query2.data_sprzedazy_id = d.id
 left JOIN miesiac m ON d.miesiac_id = m.id
-left JOIN rok r ON m.rok_id = r.id;
+left JOIN rok r ON m.rok_id = r.id
+GROUP BY r.numer, m.nazwa,wartosc_all;
 
 
 
