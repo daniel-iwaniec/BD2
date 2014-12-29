@@ -16,65 +16,83 @@
     <h2><sup><small><span class="label label-info">rollup</span></small></sup> Przykład numer 1</h2>
     <pre class="line-numbers"><code class="language-sql">{{ rollup1 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera z tabeli faktów lokalizację, produkt oraz sumuje wszystkie miary.
+        Sumowanie jest wykonywane dla konkretnej lokalizacji i produktu, konkretnej lokalizacji oraz dla wszystkich faktów.
     </div>
     <h2><sup><small><span class="label label-info">rollup</span></small></sup> Przykład numer 2</h2>
     <pre class="line-numbers"><code class="language-sql">{{ rollup2 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera z tabeli faktów klienta, produkt oraz typ produktu (za pomocą klauzuli JOIN) oraz sumuje wszystkie miary. Sumowanie jest wykonywane dla konkretnego klienta, produktu oraz typu produktu a następnie dla konkretnego klienta oraz produktu, następnie dla konkretnego klienta, a na końcu dla wszystkich faktów.
     </div>
 
     <div class="page-header"><h1><sup><small><span class="label label-primary">group by</span></small></sup> Zapytania wykorzystujące <code>CUBE</code></h1></div>
     <h2><sup><small><span class="label label-info">cube</span></small></sup> Przykład numer 1</h2>
     <pre class="line-numbers"><code class="language-sql">{{ cube1 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera z tabeli faktów branżę (za pomocą klauzuli JOIN), klienta, produkt  oraz sumuje wszystkie miary. Sumowanie jest wykonywane dla:<br><br>
+        <ul>
+            <li>branży, klienta oraz produktu,</li>
+            <li>branży oraz klienta,</li>
+            <li>branży oraz produktu,</li>
+            <li>klienta oraz produktu,</li>
+            <li>samej branży,</li>
+            <li>samego klienta,</li>
+            <li>samego produktu,</li>
+            <li>wszystkich faktów.</li>
+        </ul>
     </div>
     <h2><sup><small><span class="label label-info">cube</span></small></sup> Przykład numer 2</h2>
     <pre class="line-numbers"><code class="language-sql">{{ cube2 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        To zapytanie pobiera lokalizację, produkt oraz sumuje wszystkie miary. Sumowanie jest wykonywane dla lokalizacji oraz produktu, następnie dla samej lokalizacji, samego produktu, a na końcu dla wszystkich faktów. Zapytanie jest wykonane 4 razy jako podzapytanie z którego wybierane są kolejne grupowania, które są złączone za pomocą unii. Dzięki temu kolejne grupowania są uporządkowane w inny niż domyślny sposób.
     </div>
 
     <div class="page-header"><h1><sup><small><span class="label label-primary">group by</span></small></sup> Zapytania wykorzystujące <code>GROUPING SETS</code></h1></div>
     <h2><sup><small><span class="label label-info">grouping sets</span></small></sup> Przykład numer 1</h2>
     <pre class="line-numbers"><code class="language-sql">{{ groupingSets1 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera z tabeli faktów lokalizację, produkt oraz sumuje wszystkie miary.
+        Sumowanie jest wykonywane dla konkretnej lokalizacji i produktu, konkretnej lokalizacji, konkretnego produktu oraz dla wszystkich faktów. Grupowanie zadziała tak samo jak za pomocą cube(lokalizacja_id, produkt_id).
     </div>
     <h2><sup><small><span class="label label-info">grouping sets</span></small></sup> Przykład numer 2</h2>
     <pre class="line-numbers"><code class="language-sql">{{ groupingSets2 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera stanowisko (za pomocą klauzuli JOIN), sprzedawcę, produkt oraz sumuje wszystkie miary. Sumowanie jest wykonywane dla:
+        <ul>
+            <li>stawnowiska, sprzedawcy oraz produktu,</li>
+            <li>samego stanowiska,</li>
+            <li>samego produktu.</li>
+        </ul>
+        Takich grupowań nie da się utworzyć za pomocą rollup() lub cube().
     </div>
 
     <div class="page-header"><h1><sup><small><span class="label label-danger">over</span></small></sup> Zapytania wykorzystujące <code>PARTITION BY</code></h1></div>
     <h2><sup><small><span class="label label-warning">partition by</span></small></sup> Przykład numer 1</h2>
     <pre class="line-numbers"><code class="language-sql">{{ partitionBy1 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera sprzedawcę, produkt, wartość pojedynczej sprzedaży oraz całkowitą wartość sprzedaży dla każdego sprzedawcy z tabeli faktów.
     </div>
     <h2><sup><small><span class="label label-warning">partition by</span></small></sup> Przykład numer 2</h2>
     <pre class="line-numbers"><code class="language-sql">{{ partitionBy2 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera z tabeli faktów branżę klienta, produkt, wartość sprzedaży dla konkretnej sprzedaży, udział procentowy branży w sprzedaży oraz całkowitą wartosć sprzedaży. Udziały procentowe po zaokrągleniu są bardzo podobne, ponieważ skrypt losujący był stworzony tak, żeby równomiernie rozłożyć watości.
     </div>
 
     <div class="page-header"><h1><sup><small><span class="label label-danger">over</span></small></sup> Zapytania wykorzystujące <code>PARTITION BY &hellip; ORDER BY</code></h1></div>
     <h2><sup><small><span class="label label-warning">partition by &hellip; order by</span></small></sup> Przykład numer 1</h2>
     <pre class="line-numbers"><code class="language-sql">{{ partitionByOrderBy1 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera rok, miesiąc oraz wartość dla każdego faktu sprzedaży. Dodatkowo wyświetlana jest sumaryczna wartość dla miesiąca oraz od początku roku za pomocą pratiton by &hellip; order by.
     </div>
     <h2><sup><small><span class="label label-warning">partition by &hellip; order by</span></small></sup> Przykład numer 2</h2>
     <pre class="line-numbers"><code class="language-sql">{{ partitionByOrderBy2 }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera lokalizację, produkt oraz wartość każdego faktu sprzedaży. Dodatkowo wyświetlany ranking wartości sprzedaży w danej lokalizacji oraz numer porządkowy każdego wiersza. Wyniki są posortowane rosnąco według lokalizacji oraz miejsca w rankingu.
     </div>
 
-    <div class="page-header"><h1><sup><small><span class="label label-primary">group by</span></small></sup> Zapytanie imitujące działanie <cobde>cube</cobde></h1></div>
+    <div class="page-header"><h1><sup><small><span class="label label-primary">group by</span></small></sup> Zapytanie imitujące działanie <code>cube</code></h1></div>
     <pre class="line-numbers"><code class="language-sql">{{ groupByCube }}</code></pre>
     <div class="well">
-        Opis tego zapytania.
+        Zapytanie pobiera lokalizację, produkt oraz sumę wszystkich miar. Sumowanie jest wykonywane dla lokalizacji i produktu, samej lokalizacji, samego produktu oraz dla wszystkich faktów. Podazapytania złączone są za pomocą unii. Zapytanie działa jak samo jak zapytanie z GROUP BY CUBE(lokalizacja_id, produkt_id), ale bez użycia cube.
     </div>
 {% endblock %}
